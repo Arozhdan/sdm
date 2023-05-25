@@ -56,7 +56,8 @@ export const TestimonialsMap: FC<TestimonialsMapProps> = ({
               name={debouncedActiveTestimonial.attributes.name}
               role={debouncedActiveTestimonial.attributes.role}
               avatar={
-                debouncedActiveTestimonial.attributes.avatar.data.attributes.url
+                debouncedActiveTestimonial?.attributes?.avatar?.data.attributes
+                  .url
               }
               quote={debouncedActiveTestimonial.attributes.quote}
               quoteMaxLines={4}
