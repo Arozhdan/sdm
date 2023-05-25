@@ -14,7 +14,7 @@ export const ServicePricingCard: FC<ServicePricingCardProps> = ({
   const classes = cn(styles.servicePricingCard, className, {});
   const indexToRender = (index + 1).toString().padStart(2, "0");
   return (
-    <a className={classes} {...props}>
+    <a href={props.href} className={classes}>
       <div className={styles.left}>
         <Typography as="span" variant="big" className="hidden md:block">
           {indexToRender}
