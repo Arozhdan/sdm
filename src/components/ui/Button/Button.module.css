@@ -1,0 +1,35 @@
+.button {
+  @apply inline-flex flex-nowrap items-center whitespace-nowrap px-5 py-3
+  text-lg text-primary transition duration-200 md:px-9 md:text-xl;
+}
+.small {
+  @apply px-6 py-2 text-base;
+}
+.large {
+  @apply px-12 py-6;
+}
+
+.button svg {
+  @apply ml-2 h-5 w-5 transition duration-200;
+}
+
+.button:hover svg {
+  @apply scale-105 transform;
+}
+
+.primary {
+  @apply bg-primary text-white;
+}
+.secondary {
+  @apply bg-secondary text-primary;
+}
+.ghost {
+  @apply bg-secondary/50 text-black;
+}
+.outline {
+  @apply border border-primary bg-secondary text-primary hover:bg-primary hover:text-white;
+}
+
+.centered {
+  @apply justify-center text-center;
+}

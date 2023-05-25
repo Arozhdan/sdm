@@ -1,0 +1,15 @@
+.card {
+  @apply relative border border-primary py-9 pl-11 pr-24 shadow-primary transition duration-200 hover:shadow;
+}
+
+.link svg {
+  @apply transition duration-200;
+}
+
+.link:hover svg {
+  @apply -translate-y-px translate-x-px transform;
+}
+
+.icon {
+  @apply absolute right-9 top-8 h-8 w-8 text-primary;
+}

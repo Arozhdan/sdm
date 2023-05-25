@@ -1,0 +1,11 @@
+.servicePricingCard {
+  @apply block justify-between border-b-2 border-white/70 px-2 py-10 text-white md:flex md:pb-5 md:pt-2.5;
+  @apply transition duration-200 hover:bg-primary/50;
+}
+
+.left {
+  @apply flex;
+}
+.right {
+  @apply flex items-center gap-2 self-end;
+}

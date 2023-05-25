@@ -1,0 +1,33 @@
+.testimonialCard {
+  @apply overflow-x-hidden bg-secondary p-10 text-black;
+}
+.header {
+  @apply mb-10 flex items-center overflow-hidden;
+}
+
+.avatarImg {
+  @apply relative flex-shrink-0;
+}
+
+.avatarImg img,
+.avatarImg svg {
+  @apply mr-2 h-12 w-12 rounded-full;
+}
+.info {
+  @apply ml-2 items-start overflow-hidden;
+}
+
+.avatarImg svg {
+  @apply text-accent;
+}
+
+.linesMax {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

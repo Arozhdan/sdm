@@ -1,0 +1,20 @@
+.primary {
+  @apply text-primary;
+}
+.input {
+  @apply border border-current px-5 py-6 text-xl text-current outline-primary;
+}
+.input::placeholder {
+  @apply text-xl text-current;
+}
+
+.fullWidth {
+  @apply w-full;
+}
+.fullWidth .input {
+  @apply w-full;
+}
+
+.error {
+  @apply text-red-500;
+}

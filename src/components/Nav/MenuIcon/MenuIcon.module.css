@@ -1,0 +1,13 @@
+.icon {
+  @apply flex h-12 w-12 cursor-pointer flex-col items-center justify-evenly;
+}
+.line {
+  @apply h-1 w-12 bg-secondary transition duration-200;
+}
+.line:nth-child(2) {
+  @apply scale-x-75 transform;
+}
+
+.icon:hover .line {
+  @apply scale-x-100;
+}

@@ -1,0 +1,34 @@
+.faqs {
+  @apply w-full;
+}
+
+.faq {
+  @apply border-b border-white/30 pb-8;
+}
+
+.question {
+  @apply flex w-full select-none justify-between px-2 pt-8;
+}
+
+.icon {
+  @apply relative h-8 w-8;
+}
+
+.icon span {
+  @apply absolute left-1/2 top-1/2 block h-0.5 w-8 -translate-x-1/2 -translate-y-1/2 rounded bg-accent transition duration-200;
+}
+
+.icon span:first-child {
+  @apply -rotate-90;
+}
+
+.answer {
+  @apply px-2 pt-4 text-white;
+}
+
+.question[aria-expanded="true"] .icon span:first-child {
+  @apply rotate-0;
+}
+.question[aria-expanded="true"] .icon span {
+  @apply bg-white;
+}

@@ -1,0 +1,11 @@
+.testimonialsMap {
+  @apply relative aspect-video;
+}
+
+.pin {
+  @apply absolute w-9 text-white hover:cursor-pointer;
+}
+
+.testimonialCard {
+  @apply absolute hidden w-fit max-w-[50vw] -translate-x-1/2 -translate-y-[105%] md:block lg:max-w-[30vw];
+}

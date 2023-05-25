@@ -1,0 +1,22 @@
+.selectWrapper {
+  @apply relative overflow-visible border border-current text-xl text-current outline-current;
+}
+.selectWrapper.primary {
+  @apply border-primary text-primary;
+}
+.button {
+  @apply relative z-10;
+}
+.button[data-headlessui-state="open"] {
+  @apply hidden;
+}
+
+.fullWidth {
+  @apply w-full;
+}
+.input {
+  @apply w-full border-none px-5 py-6 text-sm text-xl leading-5 text-current outline-current;
+}
+.icon {
+  @apply w-5 text-current;
+}

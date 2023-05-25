@@ -1,0 +1,13 @@
+.serviceHeader {
+  @apply relative bg-primary py-20 text-white lg:py-32;
+}
+
+.subtitle {
+  @apply mb-20 mt-10 flex justify-end lg:mb-40;
+}
+.img {
+  @apply absolute bottom-0 right-0 hidden max-w-md lg:block;
+}
+.blocks {
+  @apply grid max-w-5xl gap-10 pb-10 pt-32 lg:grid-cols-2 lg:py-32;
+}

@@ -1,0 +1,33 @@
+.card {
+  @apply relative aspect-square overflow-hidden;
+}
+
+.imgWrapper {
+  @apply absolute left-0 top-0 h-full w-full brightness-75 transition duration-200;
+}
+
+.header {
+  @apply relative z-10 px-7 py-14 text-white;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0);
+}
+
+.more {
+  @apply invisible absolute bottom-9 left-1/2 -translate-x-1/2 translate-y-10 transition duration-200;
+}
+
+.card:hover .imgWrapper {
+  @apply brightness-50;
+}
+
+.card:hover .more {
+  @apply visible translate-y-0;
+}
+
+.promo .imgWrapper::after {
+  content: "";
+  @apply absolute left-0 top-0 h-full w-full bg-primary/90 brightness-50;
+}
+
+.promo .more {
+  @apply visible bottom-9 flex w-full translate-y-0 flex-col items-start gap-7 px-7 text-white;
+}

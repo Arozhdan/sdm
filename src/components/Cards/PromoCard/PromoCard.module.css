@@ -1,0 +1,17 @@
+.promoCard {
+  @apply relative flex flex-col items-start border bg-primary 
+	py-9 pl-11 pr-24 text-secondary
+	transition duration-200 hover:bg-opacity-95;
+}
+
+.link svg {
+  @apply transition duration-200;
+}
+
+.link:hover svg {
+  @apply -translate-x-px transform;
+}
+
+.image {
+  @apply absolute bottom-0 right-0 w-3/5;
+}

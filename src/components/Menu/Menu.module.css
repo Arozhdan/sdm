@@ -1,0 +1,28 @@
+.menu {
+  @apply fixed right-0 top-0 z-40 h-screen w-96 overflow-hidden bg-darkGray text-white shadow-md shadow-white/10;
+}
+.inner {
+  @apply relative flex h-screen flex-col justify-between overflow-y-scroll px-10 pb-10 pt-16;
+}
+.inner::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+.header {
+  @apply flex items-center justify-between pb-10 pt-2;
+}
+.logo {
+  @apply w-14;
+}
+.logo svg {
+  @apply w-full;
+}
+.close {
+  @apply w-8 cursor-pointer text-white transition duration-200 hover:text-white/50;
+}
+.top {
+  @apply grid gap-4;
+}
+.button {
+  @apply w-full;
+}

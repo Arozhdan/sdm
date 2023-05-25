@@ -1,0 +1,3 @@
+.logoWrapper {
+  @apply w-20 text-secondary md:w-fit;
+}

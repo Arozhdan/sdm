@@ -1,0 +1,20 @@
+.testimonials > svg {
+  @apply h-8 w-8 text-white hover:text-white/50;
+}
+.info {
+  @apply max-w-[80%];
+}
+@media (min-width: 768px) {
+  .testimonials > svg:first-of-type {
+    @apply -left-9;
+  }
+  .testimonials > svg:last-of-type {
+    @apply -right-9;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials > svg {
+    @apply hidden !important;
+  }
+}
