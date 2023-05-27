@@ -26,7 +26,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({
     : "https://source.unsplash.com/random?question&size=400x400";
   const imageAlt = image?.data?.attributes?.alternativeText || title;
   return (
-    <Link href={`/${slug}`} {...rest} className={classes}>
+    <Link href={`${slug}`} {...rest} className={classes}>
       <div className={styles.imgWrapper}>
         <Image src={imageUrl} fill alt={imageAlt} />
       </div>
