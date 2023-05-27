@@ -4,9 +4,9 @@
 
 html {
   scroll-behavior: smooth;
+  @apply w-screen overflow-x-hidden;
 }
-
-body {
+#__next {
   @apply w-screen overflow-x-hidden;
 }
 .container {

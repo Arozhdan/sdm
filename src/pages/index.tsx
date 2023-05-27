@@ -128,7 +128,7 @@ const Home: NextPage<IHomeProps> = ({
         </span>
       </section>
 
-      <section className="container py-24">
+      <section className="container lg:py-24">
         <Typography as="h2" variant="big" className="uppercase text-white">
           <span className="border-b-2 pb-1">отзывы</span>
         </Typography>
@@ -220,8 +220,8 @@ const Home: NextPage<IHomeProps> = ({
         </div>
       </section>
       <section className="bg-primary pb-14 pt-20 lg:pt-40">
-        <div className="container flex justify-between md:grid-cols-2">
-          <div className="flex w-1/2 flex-col justify-between">
+        <div className="container justify-between md:grid-cols-2 lg:flex">
+          <div className="flex flex-col justify-between lg:w-1/2">
             <Typography
               as="h2"
               variant="big"

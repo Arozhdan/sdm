@@ -8,7 +8,7 @@ interface MetaProps {
 
 const Meta: FC<MetaProps> = ({ seo }) => {
   if (!seo) return null;
-  const title = seo.metaTitle;
+  const title = seo.metaTitle + " | " + "Sassen Digital";
   const description = seo.metaDescription;
   const image = seo.metaImage;
   const keywords = seo.keywords;
@@ -42,7 +42,7 @@ const Meta: FC<MetaProps> = ({ seo }) => {
 
   return (
     <Head>
-      <title>{title} - Sassen Digital</title>
+      <title>{title}</title>
       {description && <meta name="description" content={description} />}
       {image && <meta name="image" content={image.attributes?.url} />}
       {keywords && <meta name="keywords" content={keywords} />}
