@@ -1,6 +1,7 @@
 import { type GetStaticProps, type NextPage } from "next";
 import { getServices, getServicesPage } from "~/api/Services";
 import { DefaultHeader, ServiceCard } from "~/components";
+import Meta from "~/components/Meta";
 import { type Services, type ServicesPage } from "~/models";
 
 const ServicePage: NextPage<ServicePageProps> = ({ page, services }) => {
@@ -9,6 +10,7 @@ const ServicePage: NextPage<ServicePageProps> = ({ page, services }) => {
   if (!page) return null;
   return (
     <>
+      <Meta seo={data.seo} />
       <DefaultHeader
         title={data.title}
         button={{

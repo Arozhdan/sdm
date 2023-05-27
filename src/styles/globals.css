@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply overflow-x-hidden;
+  @apply w-screen overflow-x-hidden;
 }
 .container {
   @apply mx-auto px-4 md:px-6;

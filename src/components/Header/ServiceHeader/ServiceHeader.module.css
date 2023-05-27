@@ -1,13 +1,24 @@
 .serviceHeader {
   @apply relative bg-primary py-20 text-white lg:py-32;
 }
-
+.whiteHeader {
+  @apply relative bg-white py-20 text-primary lg:py-32;
+}
+.darkHeader {
+  @apply relative bg-darkGray py-20 text-white lg:py-32;
+}
 .subtitle {
   @apply mb-20 mt-10 flex justify-end lg:mb-40;
 }
 .img {
-  @apply absolute bottom-0 right-0 hidden max-w-md lg:block;
+  @apply absolute bottom-0 right-0 hidden max-h-96 object-contain lg:block;
+}
+.heroItems {
+  @apply grid max-w-4xl grid-cols-2 gap-10 lg:py-14;
 }
 .blocks {
-  @apply grid max-w-5xl gap-10 pb-10 pt-32 lg:grid-cols-2 lg:py-32;
+  @apply grid max-w-4xl grid-cols-2 gap-10 pb-10 pt-32 lg:py-32;
+}
+.oneBlock {
+  @apply grid-cols-1;
 }

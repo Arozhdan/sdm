@@ -7,9 +7,10 @@
   @apply flex;
 }
 
-.item {
-  @apply w-1/2;
-}
 .right {
-  @apply flex w-1/2 flex-wrap;
+  @apply flex w-1/2 justify-end pt-4;
+}
+
+.whiteTheme {
+  @apply text-darkGray hover:bg-darkGray/20;
 }

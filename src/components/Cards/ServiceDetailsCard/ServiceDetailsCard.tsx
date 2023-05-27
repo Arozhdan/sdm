@@ -8,11 +8,14 @@ import { Typography } from "~/components/ui";
 export const ServiceDetailsCard: FC<ServiceDetailsCardProps> = ({
   className,
   title,
-  items = [],
+  value,
   index = 0,
+  whiteTheme = false,
   ...props
 }) => {
-  const classes = cn(styles.ServiceDetailsCard, className, {});
+  const classes = cn(styles.ServiceDetailsCard, className, {
+    [styles.whiteTheme || ""]: whiteTheme,
+  });
   const indexToRender = (index + 1).toString().padStart(2, "0");
   return (
     <Link className={classes} {...props}>
@@ -30,23 +33,11 @@ export const ServiceDetailsCard: FC<ServiceDetailsCardProps> = ({
         </Typography>
       </div>
       <div className={styles.right}>
-        {items.map((item, index) => (
-          <div key={index} className={styles.item}>
-            <Typography as="h5" variant="body3">
-              {item.title}
-            </Typography>
-            {item.description && (
-              <Typography
-                as="p"
-                variant="body3"
-                className="text-accent"
-                style={{ lineHeight: 1.12 }}
-              >
-                {item.description}
-              </Typography>
-            )}
-          </div>
-        ))}
+        <div className={styles.item}>
+          <Typography as="h5" variant="body3">
+            {value}
+          </Typography>
+        </div>
       </div>
     </Link>
   );

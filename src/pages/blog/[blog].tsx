@@ -4,6 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { getBlogBySlug } from "~/api/Blog";
 import { Typography } from "~/components";
+import Meta from "~/components/Meta";
 import { type Media } from "~/models";
 import { type Blog } from "~/models/api/Blog";
 
@@ -35,6 +36,7 @@ const ImageComponent = (image?: Media) => {
 const BlogPage: NextPage<BlogProps> = ({ blog }) => {
   return (
     <>
+      <Meta seo={blog.attributes.seo} />
       <header className="container mx-auto w-full max-w-6xl py-20 text-white">
         <div className="items-center lg:flex">
           <Image

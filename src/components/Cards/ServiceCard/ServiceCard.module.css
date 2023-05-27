@@ -3,7 +3,7 @@
 }
 
 .imgWrapper {
-  @apply absolute left-0 top-0 h-full w-full brightness-75 transition duration-200;
+  @apply absolute left-0 top-0 h-full w-full transition duration-200;
 }
 
 .header {

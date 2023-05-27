@@ -11,8 +11,8 @@ export const Footer = () => {
             Написать:
           </Typography>
           <Typography as="div" variant="body1" className="mt-1">
-            <a href="mailto:sassen@mediamarketing.com" target="_blank">
-              sassen@mediamarketing.com
+            <a href="mailto:info@sassendigital.com" target="_blank">
+              info@sassendigital.com
             </a>
           </Typography>
         </div>

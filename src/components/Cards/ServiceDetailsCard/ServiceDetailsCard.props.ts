@@ -4,8 +4,6 @@ export interface ServiceDetailsCardProps extends LinkProps {
   className?: string;
   title: string;
   index?: number;
-  items?: {
-    title: string;
-    description?: string;
-  }[];
+  value?: string;
+  whiteTheme?: boolean;
 }

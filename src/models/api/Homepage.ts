@@ -14,6 +14,12 @@ export interface Attributes {
   title: string;
   aboutTitle: string;
   aboutText: string;
+  aboutImage: {
+    data: {
+      id: number;
+      attributes: Media;
+    };
+  };
   outro: string;
   twoBlocksTitle: string;
   gainTitle: string;

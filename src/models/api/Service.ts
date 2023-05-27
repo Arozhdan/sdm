@@ -13,6 +13,7 @@ export interface Service {
 export interface ServiceAttributes {
   title: string;
   subtitle?: string;
+  subtitle2?: string;
   description: string;
   createdAt: string;
   updatedAt: string;
@@ -31,7 +32,15 @@ export interface ServiceAttributes {
       attributes: Media;
     };
   };
+  headerImage: {
+    data: {
+      id: number;
+      attributes: Media;
+    };
+  };
+  colorTheme?: "dark" | "primary" | "white";
   pricing?: Pricing;
+  headerItems?: Optional[];
 }
 export interface IntroItem {
   id: number;

@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "~/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { Footer, Nav, Typography } from "~/components";
+import { Footer, Nav } from "~/components";
 
 const Helvetica = localFont({
   src: "../assets/fonts/Helvetica.ttf",

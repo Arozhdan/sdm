@@ -1,4 +1,5 @@
 import { type Media } from "./Media";
+import { type Seo } from "./Seo";
 
 export interface ServicesPage {
   data: {
@@ -15,6 +16,7 @@ export interface Attributes {
   locale: string;
   headerLink: HeaderLink;
   video: Media;
+  seo: Seo;
 }
 
 export interface HeaderLink {

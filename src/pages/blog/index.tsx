@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getBLogList, getBlogPage } from "~/api/Blog";
 import { DefaultHeader, ServiceCard, Typography } from "~/components";
+import Meta from "~/components/Meta";
 import { BlogPage } from "~/models";
 import { type Blog } from "~/models/api/Blog";
 
@@ -12,6 +13,8 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs }) => {
   if (!page) return null;
   return (
     <>
+      <Meta seo={data.seo} />
+
       <DefaultHeader title={data.title} image={data.image?.data?.attributes} />
 
       <section className="container grid py-20 text-white md:grid-cols-2 lg:grid-cols-3 lg:py-40">
