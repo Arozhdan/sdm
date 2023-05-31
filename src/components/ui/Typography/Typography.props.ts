@@ -17,6 +17,6 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "left" | "center" | "right";
   weight?: "light" | "regular" | "medium" | "bold";
   underline?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }

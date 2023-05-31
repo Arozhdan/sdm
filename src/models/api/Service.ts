@@ -39,6 +39,7 @@ export interface ServiceAttributes {
     };
   };
   colorTheme?: "dark" | "primary" | "white";
+  headerImagePosition?: "bottom" | "right";
   pricing?: Pricing;
   headerItems?: Optional[];
 }

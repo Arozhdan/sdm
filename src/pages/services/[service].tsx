@@ -24,7 +24,7 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
             href={"/services/" + link.attributes.slug}
             key={service.id + index + Math.random()}
           >
-            {link.attributes.title}
+            <span dangerouslySetInnerHTML={{ __html: link.attributes.title }} />
           </Link>
         ))}
       </div>
@@ -38,6 +38,7 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
         whiteHeader={service.attributes.colorTheme === "white"}
         darkHeader={service.attributes.colorTheme === "dark"}
         headerItems={service.attributes.headerItems}
+        headerImagePosition={service.attributes.headerImagePosition}
       />
       <section className="container py-32">
         <Typography as="h2" variant="big">

@@ -1,10 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const agent = axios.create({
-		baseURL: 'http://146.19.80.223:1337/api',
-		headers: {
-				'Content-Type': 'application/json',
-		},
-})
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL!}/api`,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+console.log("process.env.NEXT_PUBLIC_API_URL", process.env.NEXT_PUBLIC_API_URL);
 
 export default agent;

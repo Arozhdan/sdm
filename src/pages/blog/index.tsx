@@ -2,7 +2,7 @@ import { type GetStaticProps, type NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getBLogList, getBlogPage } from "~/api/Blog";
-import { DefaultHeader, ServiceCard, Typography } from "~/components";
+import { DefaultHeader, Typography } from "~/components";
 import Meta from "~/components/Meta";
 import { BlogPage } from "~/models";
 import { type Blog } from "~/models/api/Blog";
@@ -22,7 +22,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs }) => {
           <Link key={blog.id} href={"/blog/" + blog.attributes.slug}>
             <Image
               src={
-                "http://146.19.80.223:1337" +
+                process.env.NEXT_PUBLIC_API_URL! +
                 blog.attributes.image.data.attributes.url
               }
               className="w-full object-cover"

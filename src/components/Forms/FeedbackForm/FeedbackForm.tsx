@@ -153,7 +153,10 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
       <div className="absolute left-0 top-0 hidden h-full w-1/2 lg:block">
         <div className="relative z-10 h-full w-full">
           <Image
-            src="http://146.19.80.223:1337/uploads/digital_d10e489127.png"
+            src={
+              process.env.NEXT_PUBLIC_API_URL! +
+              "/uploads/digital_d10e489127.png"
+            }
             fill
             alt=""
           />

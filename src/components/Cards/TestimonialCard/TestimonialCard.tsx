@@ -28,7 +28,7 @@ export const TestimonialCard: FC<TestimonialCardProps> = (props) => {
         <div className={styles.avatarImg}>
           {avatar ? (
             <Image
-              src={"http://146.19.80.223:1337" + avatar}
+              src={process.env.NEXT_PUBLIC_API_URL! + avatar}
               alt={name}
               className="object-cover"
               width={64}

@@ -23,7 +23,7 @@ const ImageComponent = (image?: Media) => {
   return (
     <div className="flex justify-center">
       <Image
-        src={"http://146.19.80.223:1337" + image.url}
+        src={process.env.NEXT_PUBLIC_API_URL! + image.url}
         className="w-full max-w-6xl object-cover"
         width={image.width || 450}
         height={image.height || 450}
@@ -41,7 +41,7 @@ const BlogPage: NextPage<BlogProps> = ({ blog }) => {
         <div className="items-center lg:flex">
           <Image
             src={
-              "http://146.19.80.223:1337" +
+              process.env.NEXT_PUBLIC_API_URL! +
               blog.attributes?.image?.data?.attributes?.url
             }
             className="lg:md-0 mb-10 w-full object-cover lg:w-1/3"

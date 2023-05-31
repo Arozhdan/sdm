@@ -2,7 +2,7 @@
   @apply text-4xl font-bold uppercase leading-snug tracking-wider sm:text-6xl;
 }
 .big {
-  @apply text-3xl font-bold leading-snug tracking-wider lg:text-5xl;
+  @apply text-3xl font-bold leading-snug tracking-wider lg:text-5xl lg:leading-snug;
 }
 
 .h1 {

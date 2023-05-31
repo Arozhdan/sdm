@@ -236,7 +236,7 @@ const Home: NextPage<IHomeProps> = ({
           <Image
             className="flex-shrink-0"
             src={
-              "http://146.19.80.223:1337" +
+              process.env.NEXT_PUBLIC_API_URL! +
               page.aboutImage?.data?.attributes.url
             }
             alt={page.aboutImage?.data?.attributes.url}
@@ -265,7 +265,7 @@ const Home: NextPage<IHomeProps> = ({
                 variant="body2"
                 className="mt-10 max-w-5xl text-white"
               >
-                {page.outro}
+                {item.text}
               </Typography>
             </div>
           ))}
@@ -361,9 +361,9 @@ const Home: NextPage<IHomeProps> = ({
                   <Image
                     src={
                       item.attributes.image?.data
-                        ? "http://146.19.80.223:1337" +
+                        ? process.env.NEXT_PUBLIC_API_URL! +
                           item.attributes.image?.data?.attributes.url
-                        : "https://source.unsplash.com/random?ceo&size=400x400"
+                        : "https://source.unsplash.com/random?gray&size=400x400"
                     }
                     width={400}
                     height={400}
@@ -387,7 +387,8 @@ const Home: NextPage<IHomeProps> = ({
               <div className="relative flex-grow pb-[100%]">
                 <Image
                   src={
-                    "http://146.19.80.223:1337/uploads/sassen_ai_ed9fb72814.png"
+                    process.env.NEXT_PUBLIC_API_URL! +
+                    "/uploads/sassen_ai_ed9fb72814.png"
                   }
                   fill
                   alt={""}

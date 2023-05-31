@@ -23,7 +23,7 @@ const config = {
       },
       {
         protocol: "http",
-        hostname: "146.19.80.223",
+        hostname: "admin.sassendigital.com",
       }
     ],
   },

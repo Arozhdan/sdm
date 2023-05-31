@@ -18,7 +18,6 @@ export const TestimonialsMap: FC<TestimonialsMapProps> = ({
     useState<Testimonial | null>(null);
 
   const debouncedActiveTestimonial = useDebounce(activeTestimonial, 300);
-  // return <>{JSON.stringify(testimonials)}</>;
   return (
     <div className={classes}>
       <Image src={"/world-map.svg"} fill alt={""} />

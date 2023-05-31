@@ -22,7 +22,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({
   });
   const imageRelUrl = image?.data?.attributes?.url;
   const imageUrl = imageRelUrl
-    ? `http://146.19.80.223:1337${imageRelUrl}`
+    ? `${process.env.NEXT_PUBLIC_API_URL!}${imageRelUrl}`
     : "https://source.unsplash.com/random?question&size=400x400";
   const imageAlt = image?.data?.attributes?.alternativeText || title;
   return (

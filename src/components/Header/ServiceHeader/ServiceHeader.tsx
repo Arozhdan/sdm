@@ -8,6 +8,7 @@ import Image from "next/image";
 import { type Service } from "~/models/api/Service";
 import ReactMarkdown from "react-markdown";
 import { __embeddedInHtml } from "prettier.config.cjs";
+import { useNBSP } from "~/hooks";
 
 interface ServiceHeaderProps {
   title: Service["attributes"]["title"];
@@ -17,6 +18,7 @@ interface ServiceHeaderProps {
   introItems: Service["attributes"]["introItems"];
   headerImage: Service["attributes"]["headerImage"];
   headerItems?: Service["attributes"]["headerItems"];
+  headerImagePosition?: Service["attributes"]["headerImagePosition"];
   whiteHeader?: boolean;
   darkHeader?: boolean;
 }
@@ -39,32 +41,52 @@ export const ServiceHeader: FC<ServiceHeaderProps> = ({
   headerImage,
   whiteHeader,
   darkHeader,
+  headerImagePosition = "right",
   headerItems = [],
 }) => {
-  const classes = cn(styles.serviceHeader, {
-    [styles.whiteHeader || ""]: whiteHeader,
-    [styles.darkHeader || ""]: darkHeader,
-  });
+  const classes = cn(
+    styles.serviceHeader,
+    styles[`header-${headerImagePosition}`],
+    {
+      [styles.whiteHeader || ""]: whiteHeader,
+      [styles.darkHeader || ""]: darkHeader,
+    }
+  );
   return (
     <header className={classes}>
       <div className="container">
-        <Typography as="h1" variant="big" className="mb-20">
-          {title}
-        </Typography>
+        <Typography
+          as="h1"
+          variant="big"
+          className="mb-10 max-w-3xl  uppercase"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         <div className={styles.subtitle}>
-          <div className="grid grid-cols-2 items-start justify-end gap-10">
-            <Typography as="p" variant="h2" weight="regular">
-              {subtitle && (
+          <div className="grid w-full items-start gap-10 lg:grid-cols-2">
+            {subtitle ? (
+              <Typography
+                as="p"
+                variant="h2"
+                weight="regular"
+                className="max-w-lg"
+              >
                 <ArrowRightIcon className="mr-7 inline w-10 transform" />
-              )}
-              {subtitle}
-            </Typography>
-            <Typography as="p" variant="h2" weight="regular">
-              {subtitle2 && (
+                {subtitle}
+              </Typography>
+            ) : (
+              <div />
+            )}
+            {subtitle2 && (
+              <Typography
+                as="p"
+                variant="h2"
+                weight="regular"
+                className="max-w-lg"
+              >
                 <ArrowRightIcon className="mr-7 inline w-10 transform" />
-              )}
-              {subtitle2}
-            </Typography>
+                {subtitle2}
+              </Typography>
+            )}
           </div>
         </div>
         <Typography
@@ -104,10 +126,13 @@ export const ServiceHeader: FC<ServiceHeaderProps> = ({
       </div>
       {headerImage?.data?.attributes?.url && (
         <Image
-          className={styles.img}
-          src={"http://146.19.80.223:1337" + headerImage?.data?.attributes?.url}
-          width={800}
-          height={800}
+          className={cn(styles.img, styles[headerImagePosition || "right"])}
+          src={
+            process.env.NEXT_PUBLIC_API_URL! +
+            headerImage?.data?.attributes?.url
+          }
+          width={headerImagePosition === "right" ? 800 : 1200}
+          height={headerImagePosition === "right" ? 1200 : 800}
           alt={headerImage?.data?.attributes?.alternativeText || "header image"}
         />
       )}

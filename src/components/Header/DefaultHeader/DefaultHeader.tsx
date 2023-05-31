@@ -45,7 +45,7 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
             {image?.url ? (
               <Image
                 className="absolute inset-0 h-full w-full object-cover"
-                src={"http://146.19.80.223:1337" + image.url}
+                src={process.env.NEXT_PUBLIC_API_URL! + image.url}
                 width={800}
                 height={1200}
                 alt="digital"
