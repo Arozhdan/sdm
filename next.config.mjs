@@ -24,6 +24,10 @@ const config = {
       {
         protocol: "http",
         hostname: "admin.sassendigital.com",
+      },
+      {
+        protocol: "http",
+        hostname: "http://127.0.0.1:1337",
       }
     ],
   },
