@@ -27,7 +27,7 @@ const config = {
       },
       {
         protocol: "http",
-        hostname: "http://127.0.0.1:1337",
+        hostname: "127.0.0.1",
       }
     ],
   },
