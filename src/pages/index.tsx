@@ -31,7 +31,7 @@ import { type Service } from "~/models/api/Service";
 import { getContacts } from "~/api/Settings";
 import { type Settings } from "~/models/api/Settings";
 import Meta from "~/components/Meta";
-import { getDictionary } from "~/lang";
+import { getDictionary, setSlot } from "~/lang";
 import { type ValueType } from "~/types";
 import { submitForm } from "~/api/Form";
 
@@ -76,12 +76,12 @@ const Home: NextPage<IHomeProps> = ({
             key={service.id}
             slug={`/services/${service.attributes.slug}`}
             label={dictionary.general.more}
-            hiddenTitle
+            darkTitle={service.attributes.textColor === "dark"}
             {...service}
           />
         ))}
         <ServiceCard
-          slug=""
+          slug="#form"
           label={dictionary.general.leave_request}
           title={dictionary.home.free_showdown}
           promo
@@ -353,10 +353,13 @@ const Home: NextPage<IHomeProps> = ({
           variant="h1"
           className="col-span-1 mx-auto max-w-4xl uppercase text-white"
           align="center"
-        >
-          {dictionary.home.moto}{" "}
-          <span className="bg-primary px-2">DIGITAL</span>
-        </Typography>
+          dangerouslySetInnerHTML={{
+            __html: setSlot(
+              dictionary.home.moto,
+              "<span class='bg-primary px-2'>DIGITAL</span>"
+            ),
+          }}
+        ></Typography>
         <div
           className="absolute
 		left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2

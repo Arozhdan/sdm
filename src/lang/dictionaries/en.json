@@ -10,23 +10,23 @@
 		"testimonials": "Testimonials",
 		"customer_service": "Customer Service",
 		"our_team": "Our Team",
-		"moto": "Let's work together to unlock the full potential of your business in the world of",
-		"free_showdown": "Sign up for a free showdown"
+		"moto": "Let’s work together to unlock the full potential of your business in a {slot} world",
+		"free_showdown": "sign up for a free evaluation"
 	},
 	"links": {
 		"home": "Home",
 		"services": "Services",
 		"blog": "Blog",
-		"contact": "Contact"
+		"contact": "Contacts"
 	},
 	"contacts": {
 		"address": "Address",
 		"phone": "Phone",
 		"email": "Email",
-		"social": "Social Networks"
+		"social": "Social Media"
 	},
 	"services": {
-		"need": "You will need this, if",
+		"need": "You need this if",
 		"optional": "Optional",
 		"bonus": "Bonus"
 	},
@@ -39,7 +39,7 @@
 		"about_project": "About the project",
 		"project_link": "Instagram / website of the project",
 		"project_description": "Project description",
-		"agreement": "By clicking \"send application\", you agree to the processing of personal data",
+		"agreement": "by clicking this button you agree to the website privacy policy",
 		"success": "Your application has been sent successfully",
 		"error": "An error occurred while sending the application, please try again later or contact us by email"
 	}

@@ -13,4 +13,5 @@ export interface ServiceCardProps extends Omit<LinkProps, "href"> {
   slug: string;
   promo?: boolean;
   hiddenTitle?: boolean;
+  darkTitle?: boolean;
 }

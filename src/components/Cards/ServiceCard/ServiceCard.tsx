@@ -16,10 +16,12 @@ export const ServiceCard: FC<ServiceCardProps> = ({
   slug,
   hiddenTitle = false,
   label = "Подробнее",
+  darkTitle = false,
   ...rest
 }) => {
   const classes = cn(styles.card, className, {
     [styles.promo || ""]: promo,
+    [styles.darkTitle || ""]: darkTitle,
   });
   const imageRelUrl = image?.data?.attributes?.url;
   const imageUrl = imageRelUrl
@@ -36,14 +38,16 @@ export const ServiceCard: FC<ServiceCardProps> = ({
           <Typography
             variant="h1"
             as="h3"
+            weight="bold"
             className={cn({
               invisible: hiddenTitle,
             })}
-          >
-            {title}
-          </Typography>
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         ) : (
-          <LogoSassen />
+          <div className="text-white">
+            <LogoSassen />
+          </div>
         )}
       </div>
       <div className={styles.more}>

@@ -5,6 +5,9 @@
 html {
   scroll-behavior: smooth;
   @apply w-screen overflow-x-hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
 }
 #__next {
   @apply w-screen overflow-x-hidden;

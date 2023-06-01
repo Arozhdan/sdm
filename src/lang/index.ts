@@ -5,3 +5,6 @@ const dictionaries = {
 
 export const getDictionary = async (locale?: "en" | "ru") =>
   dictionaries[locale || "ru"]();
+
+export const setSlot = (text?: string, slot?: string): string =>
+  !slot ? text || "" : text?.replace("{slot}", slot) || "";

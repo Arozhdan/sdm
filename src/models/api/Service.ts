@@ -40,6 +40,7 @@ export interface ServiceAttributes {
   };
   colorTheme?: "dark" | "primary" | "white";
   headerImagePosition?: "bottom" | "right";
+  textColor?: "dark" | "white";
   pricing?: Pricing;
   headerItems?: Optional[];
 }
