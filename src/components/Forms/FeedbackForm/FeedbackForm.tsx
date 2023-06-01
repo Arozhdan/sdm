@@ -10,9 +10,18 @@ import {
   LogoS,
 } from "~/components/ui";
 import Image from "next/image";
+import { type ValueType } from "~/types";
+import { type getDictionary } from "~/lang";
 
 interface FeedbackFormProps {
-  onSubmit: () => void;
+  onSubmit: (
+    name: string,
+    phone: string,
+    email: string,
+    link: string,
+    message: string
+  ) => Promise<void>;
+  dictionary?: ValueType<ReturnType<typeof getDictionary>>;
 }
 
 const defaultForm = {
@@ -38,7 +47,7 @@ const defaultForm = {
   },
 };
 
-export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
+export const FeedbackForm = ({ onSubmit, dictionary }: FeedbackFormProps) => {
   const [form, setForm] = useState(defaultForm);
 
   const setName = (value: string) => {
@@ -118,12 +127,18 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
 
   const resetForm = () => setForm(defaultForm);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isValid = validate();
 
     if (isValid) {
-      onSubmit();
+      await onSubmit(
+        form.name.value,
+        form.phone.value,
+        form.email.value,
+        form.instagram.value,
+        form.text.value
+      );
       resetForm();
       window.scrollTo(0, 0);
     }
@@ -165,14 +180,15 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
       <div className="container lg:flex">
         <div className="relative z-20 flex w-full flex-shrink-0 flex-col justify-between gap-12 overflow-hidden pb-6 pt-16 text-primary lg:w-1/2 lg:text-white">
           <Typography as="h4" variant="big" className="max-w-md">
-            Оставьте заявку, чтобы обсудить проект
+            {dictionary?.form.title}
           </Typography>
           <div className="hidden lg:block">
             <LogoS />
           </div>
         </div>
         <form
-          onSubmit={(e) => handleSubmit(e)}
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onSubmit={handleSubmit}
           className="flex w-full flex-col items-start justify-center pb-6 pt-16 lg:w-1/2 lg:pl-12"
         >
           <Typography
@@ -181,18 +197,18 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
             className="text-primary"
             weight="regular"
           >
-            Ваши контакты
+            {dictionary?.form.your_contacts}
           </Typography>
           <div className="mt-12 grid w-full grid-cols-2 gap-9">
             <Input
               className="col-span-2 lg:col-span-1"
-              label="Имя"
+              label={dictionary?.form.name || ""}
               value={form.name.value}
               error={form.name.error}
               onChange={(e) => setName(e.target.value)}
             />
             <Input
-              label="Номер"
+              label={dictionary?.form.phone || ""}
               className="col-span-2 lg:col-span-1"
               placeholder="+7"
               value={form.phone.value}
@@ -204,7 +220,7 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
             />
             <Input
               className="col-span-2"
-              label="Почта"
+              label={dictionary?.form.email || ""}
               type="email"
               value={form.email.value}
               error={form.email.error}
@@ -218,11 +234,11 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
               className="mt-4 text-primary"
               weight="regular"
             >
-              О проекте
+              {dictionary?.form.about_project}
             </Typography>
             <Input
               className="col-span-2"
-              label="Инстаграм / Сайт проекта"
+              label={dictionary?.form.project_link || ""}
               value={form.instagram.value}
               error={form.instagram.error}
               onChange={(e) => {
@@ -231,7 +247,7 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
             />
             <TextArea
               className="col-span-2"
-              label={"Опишите проект и цели"}
+              label={dictionary?.form.project_description || ""}
               value={form.text.value}
               error={form.text.error}
               onChange={(e) => {
@@ -247,15 +263,14 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
               size="large"
               icon={<ArrowUpRightIcon />}
             >
-              Оставить заявку
+              {dictionary?.general.leave_request}
             </Button>
             <Typography
               as="span"
               variant="body3"
               className="mt-5 block text-gray-600 lg:mt-0"
             >
-              Нажимая кнопку «отправить заявку», вы соглашаетесь на обработку
-              персональных данных
+              {dictionary?.form.agreement}
             </Typography>
           </div>
         </form>

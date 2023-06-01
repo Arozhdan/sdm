@@ -31,6 +31,9 @@ import { type Service } from "~/models/api/Service";
 import { getContacts } from "~/api/Settings";
 import { type Settings } from "~/models/api/Settings";
 import Meta from "~/components/Meta";
+import { getDictionary } from "~/lang";
+import { type ValueType } from "~/types";
+import { submitForm } from "~/api/Form";
 
 const Home: NextPage<IHomeProps> = ({
   page: { attributes: page },
@@ -40,7 +43,26 @@ const Home: NextPage<IHomeProps> = ({
   testmonials,
   promos,
   settings,
+  dictionary,
 }) => {
+  const handleSubmit = async (
+    name: string,
+    phone: string,
+    email: string,
+    link: string,
+    message: string
+  ) => {
+    await submitForm(
+      {
+        name,
+        phone,
+        email,
+        link,
+        message,
+      },
+      dictionary
+    );
+  };
   return (
     <>
       <Meta seo={page.seo} />
@@ -53,15 +75,21 @@ const Home: NextPage<IHomeProps> = ({
             image={service.attributes.image}
             key={service.id}
             slug={`/services/${service.attributes.slug}`}
+            label={dictionary.general.more}
             hiddenTitle
             {...service}
           />
         ))}
-        <ServiceCard slug="" title="Запись на бесплатный разбор" promo />
+        <ServiceCard
+          slug=""
+          label={dictionary.general.leave_request}
+          title={dictionary.home.free_showdown}
+          promo
+        />
       </section>
       <section className="container pb-24 pt-10">
         <Typography as="h2" variant="big" className="uppercase text-white">
-          Пакеты / Стоимость
+          {dictionary.home.pricing}
         </Typography>
         <div className="pt-10">
           {promos?.map((promo, index) => (
@@ -76,7 +104,7 @@ const Home: NextPage<IHomeProps> = ({
           ))}
           <div className="flex justify-end pt-10">
             <Button icon={<ArrowUpRightIcon />} className="w-full md:w-fit">
-              Записаться на бесплатный разбор
+              {dictionary.home.free_showdown}
             </Button>
           </div>
         </div>
@@ -130,7 +158,9 @@ const Home: NextPage<IHomeProps> = ({
 
       <section className="container lg:py-24">
         <Typography as="h2" variant="big" className="uppercase text-white">
-          <span className="border-b-2 pb-1">отзывы</span>
+          <span className="border-b-2 pb-1">
+            {dictionary.home.testimonials}
+          </span>
         </Typography>
         <TestimonialsMap testimonials={testmonials} />
         <Testimonials testimonials={testmonials} className="lg:-mt-32" />
@@ -149,11 +179,7 @@ const Home: NextPage<IHomeProps> = ({
         </div>
       </section>
       <div id="form" className="pt-14">
-        <FeedbackForm
-          onSubmit={() => {
-            toast.success("Ваша заявка успешно отправлена");
-          }}
-        />
+        <FeedbackForm dictionary={dictionary} onSubmit={handleSubmit} />
       </div>
       <section className="container pb-20 pt-40">
         <Typography
@@ -161,7 +187,7 @@ const Home: NextPage<IHomeProps> = ({
           variant="big"
           className="col-span-1 uppercase text-white"
         >
-          СЛУЖБА ЗАБОТЫ
+          {dictionary.home.customer_service}
         </Typography>
         <div className="mt-28 items-center justify-between border-b border-white pb-20 md:flex">
           <div>
@@ -171,7 +197,7 @@ const Home: NextPage<IHomeProps> = ({
               weight="bold"
               className="text-accent"
             >
-              Написать:
+              {dictionary.general.mail_us}:
             </Typography>
             <Typography as="div" variant="body1" className="mt-1 text-white">
               <a
@@ -328,8 +354,8 @@ const Home: NextPage<IHomeProps> = ({
           className="col-span-1 mx-auto max-w-4xl uppercase text-white"
           align="center"
         >
-          Давайте работать вместе, чтобы раскрыть весь потенциал твоего бизнеса
-          в мире <span className="bg-primary px-2">DIGITAL</span>
+          {dictionary.home.moto}{" "}
+          <span className="bg-primary px-2">DIGITAL</span>
         </Typography>
         <div
           className="absolute
@@ -351,7 +377,7 @@ const Home: NextPage<IHomeProps> = ({
           align="center"
           className="col-span-1 uppercase text-white"
         >
-          Наша команда
+          {dictionary.home.our_team}
         </Typography>
         <div className="grid gap-24 pt-40 text-white lg:grid-cols-3">
           {team.map((item) => (
@@ -412,9 +438,11 @@ const Home: NextPage<IHomeProps> = ({
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await getHome();
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const response = await getHome(locale);
   const settings = await getContacts();
+  const dictionaryKey = locale === "ru" ? "ru" : "en";
+  const dictionary = await getDictionary(dictionaryKey);
 
   return {
     revalidate: 10,
@@ -426,6 +454,7 @@ export const getStaticProps: GetStaticProps = async () => {
       testmonials: response[4]?.data,
       promos: response[5]?.data,
       settings,
+      dictionary,
     },
   };
 };
@@ -438,4 +467,5 @@ interface IHomeProps {
   testmonials: Testimonial[];
   promos: Promo[];
   settings: Settings;
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

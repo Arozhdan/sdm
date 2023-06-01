@@ -25,7 +25,7 @@ export const TestimonialsMap: FC<TestimonialsMapProps> = ({
         <>
           {testimonial.attributes.mapPosition && (
             <MapPinIcon
-              key={testimonial.id}
+              key={testimonial.id + Math.random()}
               onMouseEnter={() => setActiveTestimonial(testimonial)}
               onMouseLeave={() => setActiveTestimonial(null)}
               className={styles.pin}
@@ -41,7 +41,10 @@ export const TestimonialsMap: FC<TestimonialsMapProps> = ({
         debouncedActiveTestimonial.attributes.mapPosition && (
           <div
             className={styles.testimonialCard}
-            key={debouncedActiveTestimonial.attributes.name}
+            key={
+              debouncedActiveTestimonial.attributes.name +
+              Math.random().toString()
+            }
             style={{
               left: `${debouncedActiveTestimonial.attributes.mapPosition.left}%`,
               top: `${debouncedActiveTestimonial.attributes.mapPosition.top}%`,

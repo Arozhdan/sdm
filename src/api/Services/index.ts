@@ -9,10 +9,11 @@ interface ServicesPageResponse {
   ];
 }
 
-export const getServicesPage = async () => {
+export const getServicesPage = async (locale?: string) => {
+  const localePostfix = locale ? `locale=${locale}` : "";
   try {
     const page = await agent.get<ServicesPageResponse>(
-      "/services-page?populate=deep"
+      "/services-page?populate=deep&" + localePostfix
     );
     return {
       page: page.data,
@@ -22,23 +23,28 @@ export const getServicesPage = async () => {
   }
 };
 
-export const getServices = async () => {
+export const getServices = async (locale?: string) => {
+  const localePostfix = locale ? `locale=${locale}` : "";
   const services = await agent.get<ServicesResponse>(
-    "/services?fields[0]=title&fields[1]=slug&populate=image"
+    "/services?fields[0]=title&fields[1]=slug&populate=image&" + localePostfix
   );
   return {
     services: services.data,
   };
 };
 
-export const getServicesList = async () => {
-  const services = await agent.get<ServicesResponse>("/services?");
+export const getServicesList = async (locale?: string) => {
+  const localePostfix = locale ? `locale=${locale}` : "";
+  const services = await agent.get<ServicesResponse>(
+    "/services?" + localePostfix
+  );
   return services.data;
 };
 
-export const getServiceBySlug = async (slug: string) => {
+export const getServiceBySlug = async (slug: string, locale?: string) => {
   if (!slug) return null;
-  const endPoint = `/services?filters[slug]=${slug}&populate=deep`;
+  const localePostfix = locale ? `locale=${locale}` : "";
+  const endPoint = `/services?filters[slug]=${slug}&populate=deep&${localePostfix}`;
   const service = await agent.get<{ data: Service[] }>(endPoint);
 
   const response = service.data;

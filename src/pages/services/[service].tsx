@@ -13,8 +13,14 @@ import {
 } from "~/components";
 import { type Service } from "~/models/api/Service";
 import Meta from "~/components/Meta";
+import { getDictionary } from "~/lang";
+import { type ValueType } from "~/types";
 
-const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
+const ServicePage: NextPage<ServiceProps> = ({
+  service,
+  links,
+  dictionary,
+}) => {
   return (
     <div className="min-h-screen bg-darkGray text-white">
       <Meta seo={service.attributes.seo} />
@@ -42,7 +48,8 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
       />
       <section className="container py-32">
         <Typography as="h2" variant="big">
-          Вам это необходимо, если <ArrowDownLeftIcon className="inline w-8" />
+          {dictionary.services.need}{" "}
+          <ArrowDownLeftIcon className="inline w-8" />
         </Typography>
         <div className="mt-40 grid gap-20 sm:grid-cols-2 lg:grid-cols-3">
           {service.attributes.reasons?.map((reason, index) => (
@@ -89,16 +96,22 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
                       variant="body2"
                       className="mr-16 text-accent"
                     >
-                      Бонус:
+                      {dictionary.services.bonus}:
                     </Typography>
                     <Typography as="p" variant="body2">
                       {bonus.title}
                     </Typography>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button size="small">от {bonus.pricing?.rub} ₽</Button>/
-                    <Button size="small">{bonus.pricing?.eur} $</Button>
-                    <div className="flex h-full flex-col justify-end">мес.</div>
+                    {bonus.pricing?.rub && (
+                      <>
+                        <Button size="small">{bonus.pricing?.rub} ₽</Button>/
+                        <Button size="small">{bonus.pricing?.eur} $</Button>
+                        <div className="flex h-full flex-col justify-end">
+                          мес.
+                        </div>
+                      </>
+                    )}
                   </div>
                 </>
               ))}
@@ -109,7 +122,7 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
       {service.attributes.optional.length > 0 && (
         <section className="container justify-between py-32 md:flex">
           <Typography as="h3" variant="big">
-            Опционально
+            {dictionary.services.optional}
           </Typography>
           <div className="mt-8 max-w-lg">
             {service.attributes.optional.map((optional) => (
@@ -127,24 +140,31 @@ const ServicePage: NextPage<ServiceProps> = ({ service, links }) => {
           </div>
         </section>
       )}
-      <FeedbackForm onSubmit={() => alert("")} />
+      <FeedbackForm dictionary={dictionary} onSubmit={() => alert("")} />
     </div>
   );
 };
 
 export default ServicePage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+  locale,
+}) => {
   const serviceSlug = params?.service || "";
-  const service = await getServiceBySlug(serviceSlug.toString());
-  const services = await getServicesList();
+  const localeKey = locale === "ru" ? "ru" : "en";
+  const service = await getServiceBySlug(serviceSlug.toString(), localeKey);
+  const services = await getServicesList(localeKey);
+
+  const dictionary = await getDictionary(localeKey);
 
   return {
-    props: { service, links: services.data },
+    props: { service, links: services.data, dictionary },
   };
 };
 
 interface ServiceProps {
   service: Service;
   links: Service[];
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

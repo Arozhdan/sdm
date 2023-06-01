@@ -5,8 +5,10 @@ import ReactMarkdown from "react-markdown";
 import { getBlogBySlug } from "~/api/Blog";
 import { Typography } from "~/components";
 import Meta from "~/components/Meta";
+import { getDictionary } from "~/lang";
 import { type Media } from "~/models";
 import { type Blog } from "~/models/api/Blog";
+import { type ValueType } from "~/types";
 
 const RichTextComponent = (text?: string) => {
   if (!text) return null;
@@ -33,7 +35,7 @@ const ImageComponent = (image?: Media) => {
   );
 };
 
-const BlogPage: NextPage<BlogProps> = ({ blog }) => {
+const BlogPage: NextPage<BlogProps> = ({ blog, dictionary }) => {
   return (
     <>
       <Meta seo={blog.attributes.seo} />
@@ -77,21 +79,28 @@ const BlogPage: NextPage<BlogProps> = ({ blog }) => {
 
 export default BlogPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+  locale,
+}) => {
   const blogSlug = params?.blog || "";
-  const blog = await getBlogBySlug(blogSlug.toString());
+  const blog = await getBlogBySlug(blogSlug.toString(), locale);
   if (!blog) {
     return {
       notFound: true,
     };
   }
+  const localeKey = locale === "ru" ? "ru" : "en";
+  const dictionary = await getDictionary(localeKey);
   return {
     props: {
       blog,
+      dictionary,
     },
   };
 };
 
 interface BlogProps {
   blog: Blog;
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

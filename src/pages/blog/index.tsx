@@ -4,10 +4,12 @@ import Link from "next/link";
 import { getBLogList, getBlogPage } from "~/api/Blog";
 import { DefaultHeader, Typography } from "~/components";
 import Meta from "~/components/Meta";
+import { getDictionary } from "~/lang";
 import { BlogPage } from "~/models";
 import { type Blog } from "~/models/api/Blog";
+import { type ValueType } from "~/types";
 
-const BlogPage: NextPage<BlogPageProps> = ({ page, blogs }) => {
+const BlogPage: NextPage<BlogPageProps> = ({ page, blogs, dictionary }) => {
   const data = page?.attributes;
 
   if (!page) return null;
@@ -23,7 +25,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs }) => {
             <Image
               src={
                 process.env.NEXT_PUBLIC_API_URL! +
-                blog.attributes.image.data.attributes.url
+                blog.attributes.image?.data.attributes.url
               }
               className="w-full object-cover"
               width={300}
@@ -45,14 +47,17 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs }) => {
 
 export default BlogPage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const page = await getBlogPage();
-  const blogs = await getBLogList();
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const page = await getBlogPage(locale);
+  const blogs = await getBLogList(locale);
+  const localeKey = locale === "ru" ? "ru" : "en";
+  const dictionary = await getDictionary(localeKey);
 
   return {
     props: {
       page,
       blogs,
+      dictionary,
     },
   };
 };
@@ -60,4 +65,5 @@ export const getStaticProps: GetStaticProps = async () => {
 interface BlogPageProps {
   page: BlogPage;
   blogs: Blog[];
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

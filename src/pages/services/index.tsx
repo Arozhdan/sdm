@@ -2,9 +2,15 @@ import { type GetStaticProps, type NextPage } from "next";
 import { getServices, getServicesPage } from "~/api/Services";
 import { DefaultHeader, ServiceCard } from "~/components";
 import Meta from "~/components/Meta";
+import { getDictionary } from "~/lang";
 import { type Services, type ServicesPage } from "~/models";
+import { type ValueType } from "~/types";
 
-const ServicePage: NextPage<ServicePageProps> = ({ page, services }) => {
+const ServicePage: NextPage<ServicePageProps> = ({
+  page,
+  services,
+  dictionary,
+}) => {
   const data = page?.attributes;
 
   if (!page) return null;
@@ -27,14 +33,16 @@ const ServicePage: NextPage<ServicePageProps> = ({ page, services }) => {
             key={service.id}
             slug={`/services/${service.attributes.slug}`}
             hiddenTitle
+            label={dictionary.general.more}
             {...service}
           />
         ))}
         <ServiceCard
           slug="/#form"
           scroll={false}
-          title="Запись на бесплатный разбор"
+          title={dictionary.home.free_showdown}
           promo
+          label={dictionary.general.leave_request}
         />
       </section>
     </>
@@ -43,14 +51,17 @@ const ServicePage: NextPage<ServicePageProps> = ({ page, services }) => {
 
 export default ServicePage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { page } = await getServicesPage();
-  const { services } = await getServices();
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const { page } = await getServicesPage(locale);
+  const { services } = await getServices(locale);
+  const localeKey = locale === "ru" ? "ru" : "en";
+  const dictionary = await getDictionary(localeKey);
 
   return {
     props: {
       page: page.data,
       services: services.data,
+      dictionary,
     },
   };
 };
@@ -58,4 +69,5 @@ export const getStaticProps: GetStaticProps = async () => {
 interface ServicePageProps {
   page: ServicesPage["data"];
   services: Services[];
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

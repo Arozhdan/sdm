@@ -15,6 +15,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({
   image,
   slug,
   hiddenTitle = false,
+  label = "Подробнее",
   ...rest
 }) => {
   const classes = cn(styles.card, className, {
@@ -51,9 +52,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({
             {title}
           </Typography>
         )}
-        <Button icon={<ArrowUpRightIcon />}>
-          {promo ? "Отправить заявку" : "Подробнее"}
-        </Button>
+        <Button icon={<ArrowUpRightIcon />}>{label}</Button>
       </div>
     </Link>
   );

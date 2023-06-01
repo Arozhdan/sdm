@@ -4,6 +4,7 @@ import { type Media } from "~/models/api";
 export interface ServiceCardProps extends Omit<LinkProps, "href"> {
   className?: string;
   title: string;
+  label?: string;
   image?: {
     data: {
       attributes: Media;

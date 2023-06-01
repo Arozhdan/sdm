@@ -1,0 +1,46 @@
+{
+	"general": {
+		"language": "rus",
+		"mail_us": "Mail us",
+		"leave_request": "Leave a request",
+		"more": "See more"
+	},
+	"home": {
+		"pricing": "Pricing & Plans",
+		"testimonials": "Testimonials",
+		"customer_service": "Customer Service",
+		"our_team": "Our Team",
+		"moto": "Let's work together to unlock the full potential of your business in the world of",
+		"free_showdown": "Sign up for a free showdown"
+	},
+	"links": {
+		"home": "Home",
+		"services": "Services",
+		"blog": "Blog",
+		"contact": "Contact"
+	},
+	"contacts": {
+		"address": "Address",
+		"phone": "Phone",
+		"email": "Email",
+		"social": "Social Networks"
+	},
+	"services": {
+		"need": "You will need this, if",
+		"optional": "Optional",
+		"bonus": "Bonus"
+	},
+	"form": {
+		"title": "Leave a request and we will contact you",
+		"your_contacts": "Your contacts",
+		"name": "Name",
+		"phone": "Phone",
+		"email": "Email",
+		"about_project": "About the project",
+		"project_link": "Instagram / website of the project",
+		"project_description": "Project description",
+		"agreement": "By clicking \"send application\", you agree to the processing of personal data",
+		"success": "Your application has been sent successfully",
+		"error": "An error occurred while sending the application, please try again later or contact us by email"
+	}
+}

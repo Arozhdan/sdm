@@ -29,7 +29,7 @@ export const ServicePricingCard: FC<ServicePricingCardProps> = ({
         </Typography>
       </div>
       <div className={styles.right}>
-        <Button size="small">Экономия {discount}%</Button>
+        <Button size="small">{discount}%</Button>
       </div>
     </a>
   );

@@ -1,5 +1,5 @@
 .ServiceDetailsCard {
-  @apply flex min-h-[132px] justify-between border-b-2 border-white/70 pb-5 pt-2.5 text-white;
+  @apply flex min-h-[132px] flex-wrap justify-between border-b-2 border-white/70 pb-5 pt-2.5 text-white md:flex-nowrap;
   @apply transition duration-200 hover:bg-primary/50;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .right {
-  @apply flex w-1/2 justify-end pt-4;
+  @apply flex w-full justify-end pt-4 md:w-1/2;
 }
 
 .whiteTheme {

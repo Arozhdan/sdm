@@ -9,7 +9,7 @@ import styles from "./Nav.module.css";
 import { createPortal } from "react-dom";
 import { Menu } from "../Menu/Menu";
 
-export const Nav: FC<NavProps> = ({ variant = "agency" }) => {
+export const Nav: FC<NavProps> = ({ variant = "agency", dictionary }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export const Nav: FC<NavProps> = ({ variant = "agency" }) => {
                   icon={<ArrowUpRightIcon />}
                   className="mr-16 "
                 >
-                  Оставить заявку
+                  {dictionary?.general.leave_request}
                 </Button>
               </div>
             </>
@@ -49,7 +49,11 @@ export const Nav: FC<NavProps> = ({ variant = "agency" }) => {
       </div>
       {isMenuOpen &&
         createPortal(
-          <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />,
+          <Menu
+            dictionary={dictionary}
+            isOpen={isMenuOpen}
+            onClose={() => setIsMenuOpen(false)}
+          />,
           document.getElementById("#app")!
         )}
     </nav>

@@ -4,13 +4,17 @@ import styles from "./Menu.module.css";
 import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { type getDictionary } from "~/lang";
+import { type ValueType } from "~/types";
 
 interface MenuProps {
   onClose: () => void;
   isOpen?: boolean;
+  dictionary?: ValueType<ReturnType<typeof getDictionary>>;
 }
-export const Menu: FC<MenuProps> = ({ onClose, isOpen }) => {
+export const Menu: FC<MenuProps> = ({ onClose, isOpen, dictionary }) => {
   const router = useRouter();
+  const { pathname, asPath, query, locale } = router;
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
@@ -52,22 +56,36 @@ export const Menu: FC<MenuProps> = ({ onClose, isOpen }) => {
           </div>
           <Link href="/">
             <Typography variant="body1" className="uppercase" weight="regular">
-              Главная
+              {dictionary?.links.home}
             </Typography>
           </Link>
           <Link href="/services">
             <Typography variant="body1" className="uppercase" weight="regular">
-              Сервисы
+              {dictionary?.links.services}
             </Typography>
           </Link>
           <Link href="/blog">
             <Typography variant="body1" className="uppercase" weight="regular">
-              Блог
+              {dictionary?.links.blog}
             </Typography>
           </Link>
           <Link href="/contacts">
             <Typography variant="body1" className="uppercase" weight="regular">
-              Контакты
+              {dictionary?.links.contact}
+            </Typography>
+          </Link>
+          <Link
+            href={{
+              pathname: asPath,
+            }}
+            locale={locale === "ru" ? "en" : "ru"}
+          >
+            <Typography
+              variant="body3"
+              className="inline-block bg-white px-4 py-2 uppercase text-primary"
+              weight="regular"
+            >
+              {dictionary?.general.language}
             </Typography>
           </Link>
         </div>
@@ -78,7 +96,7 @@ export const Menu: FC<MenuProps> = ({ onClose, isOpen }) => {
             icon={<ArrowUpRightIcon />}
             className={styles.button}
           >
-            Оставить заявку
+            {dictionary?.general.leave_request}
           </Button>
         </div>
       </div>

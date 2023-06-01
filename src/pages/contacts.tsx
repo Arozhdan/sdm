@@ -2,9 +2,11 @@ import { type NextPage, type GetServerSideProps } from "next";
 import React from "react";
 import { getContacts } from "~/api/Settings";
 import { Typography } from "~/components";
+import { getDictionary } from "~/lang";
 import { type Settings } from "~/models/api/Settings";
+import { type ValueType } from "~/types";
 
-const Contacts: NextPage<Props> = ({ data }) => {
+const Contacts: NextPage<Props> = ({ data, dictionary }) => {
   const formattedPhone = data?.attributes?.contacts?.phone?.replace(
     /[^0-9]/g,
     ""
@@ -13,7 +15,7 @@ const Contacts: NextPage<Props> = ({ data }) => {
     <>
       <header className="bg-primary py-10">
         <div className="container text-white">
-          <Typography variant="large">Контакты</Typography>
+          <Typography variant="large">{dictionary.links.contact}</Typography>
         </div>
       </header>
       <main className="py-20 text-white">
@@ -21,7 +23,7 @@ const Contacts: NextPage<Props> = ({ data }) => {
           <div className="grid grid-cols-2 gap-10">
             <div className="col-span-2 md:col-span-1">
               <Typography variant="h3" className="mb-3">
-                Адрес
+                {dictionary.contacts.address}
               </Typography>
               <Typography variant="body2">
                 {data?.attributes?.contacts?.address}
@@ -29,7 +31,7 @@ const Contacts: NextPage<Props> = ({ data }) => {
             </div>
             <div className="col-span-2 md:col-span-1">
               <Typography variant="h3" className="mb-3">
-                Телефон
+                {dictionary.contacts.phone}
               </Typography>
               <Typography variant="body2">
                 <a href={"tel: " + formattedPhone}>
@@ -39,7 +41,7 @@ const Contacts: NextPage<Props> = ({ data }) => {
             </div>
             <div className="col-span-2 md:col-span-1">
               <Typography variant="h3" className="mb-3">
-                Email
+                {dictionary.contacts.email}
               </Typography>
               <Typography variant="body2">
                 <a href={"mailto:" + data?.attributes?.contacts.email}>
@@ -49,7 +51,7 @@ const Contacts: NextPage<Props> = ({ data }) => {
             </div>
             <div className="col-span-2 md:col-span-1">
               <Typography variant="h3" className="mb-3">
-                Социальные сети
+                {dictionary.contacts.social}
               </Typography>
               <Typography variant="body2">
                 <a target="_blank" href={data?.attributes?.contacts?.instagram}>
@@ -76,12 +78,15 @@ const Contacts: NextPage<Props> = ({ data }) => {
 
 export default Contacts;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const data = await getContacts();
   if (!data?.attributes) return { notFound: true };
-  return { props: { data } };
+  const localeKey = locale === "ru" ? "ru" : "en";
+  const dictionary = await getDictionary(localeKey);
+  return { props: { data, dictionary } };
 };
 
 interface Props {
   data: Settings;
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
 }

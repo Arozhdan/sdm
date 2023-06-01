@@ -4,24 +4,34 @@ import "~/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Footer, Nav } from "~/components";
+import { useRouter } from "next/router";
+import { type getDictionary } from "~/lang";
+import { type GetServerSideProps } from "next";
+import { type ValueType } from "~/types";
 
 const Helvetica = localFont({
   src: "../assets/fonts/Helvetica.ttf",
   variable: "--font-helvetica",
 });
 
-const MyApp: AppType = ({ Component, pageProps }) => {
+const MyApp: AppType<MyAppProps> = ({ Component, pageProps }) => {
+  const dictionary = pageProps.dictionary;
+
   return (
     <div
       id="#app"
       className={`${Helvetica.variable} min-h-screen bg-darkGray font-sans`}
     >
-      <Nav variant="agency" />
+      <Nav dictionary={dictionary} variant="agency" />
       <Component {...pageProps} />
       <ToastContainer position="bottom-right" draggable autoClose={10000} />
-      <Footer />
+      <Footer dictionary={dictionary} />
     </div>
   );
 };
 
 export default MyApp;
+
+interface MyAppProps {
+  dictionary: ValueType<ReturnType<typeof getDictionary>>;
+}
