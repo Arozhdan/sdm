@@ -103,7 +103,12 @@ const Home: NextPage<IHomeProps> = ({
             />
           ))}
           <div className="flex justify-end pt-10">
-            <Button icon={<ArrowUpRightIcon />} className="w-full md:w-fit">
+            <Button
+              tag="a"
+              href="#form"
+              icon={<ArrowUpRightIcon />}
+              className="w-full md:w-fit"
+            >
               {dictionary.home.free_showdown}
             </Button>
           </div>
