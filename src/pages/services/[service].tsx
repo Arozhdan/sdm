@@ -15,12 +15,31 @@ import { type Service } from "~/models/api/Service";
 import Meta from "~/components/Meta";
 import { getDictionary } from "~/lang";
 import { type ValueType } from "~/types";
+import { submitForm } from "~/api/Form";
 
 const ServicePage: NextPage<ServiceProps> = ({
   service,
   links,
   dictionary,
 }) => {
+  const handleSubmit = async (
+    name: string,
+    phone: string,
+    email: string,
+    link: string,
+    message: string
+  ) => {
+    await submitForm(
+      {
+        name,
+        phone,
+        email,
+        link,
+        message,
+      },
+      dictionary
+    );
+  };
   return (
     <div className="min-h-screen bg-darkGray text-white">
       <Meta seo={service.attributes.seo} />
@@ -140,7 +159,7 @@ const ServicePage: NextPage<ServiceProps> = ({
           </div>
         </section>
       )}
-      <FeedbackForm dictionary={dictionary} onSubmit={() => alert("")} />
+      <FeedbackForm dictionary={dictionary} onSubmit={handleSubmit} />
     </div>
   );
 };
