@@ -35,6 +35,8 @@ const config = {
     locales: ['en', 'ru'],
     defaultLocale: 'ru',
 
-  }
+  },
+  siteUrl: 'https://sassendigital.com',
+  generateRobotsTxt: true,
 };
 export default config;
