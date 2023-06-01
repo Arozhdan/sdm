@@ -6,7 +6,7 @@
 }
 
 .h1 {
-  @apply text-lg font-bold leading-normal tracking-wider md:text-2xl lg:text-[30px] lg:leading-normal;
+  @apply text-lg font-bold leading-snug tracking-normal md:text-2xl lg:text-[30px] lg:leading-snug;
 }
 
 .h2 {
