@@ -32,9 +32,8 @@ const ServicePage: NextPage<ServicePageProps> = ({
             image={service.attributes.image}
             key={service.id}
             slug={`/services/${service.attributes.slug}`}
-            hiddenTitle
             label={dictionary.general.more}
-            {...service}
+            darkTitle={service.attributes.textColor === "dark"}
           />
         ))}
         <ServiceCard
