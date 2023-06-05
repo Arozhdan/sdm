@@ -16,7 +16,7 @@ const getHome = async (locale?: string) => {
       "/services?fields[0]=title&fields[0]=textColor&fields[1]=slug&populate=image&" +
         localePostfix,
       "/faqs?" + localePostfix,
-      "/teams?populate=image&" + localePostfix,
+      "/teams?sort[0]=publishedAt:desc&populate=image&" + localePostfix,
       "/testimonials?populate=*&" + localePostfix,
       "/promos?" + localePostfix,
     ];

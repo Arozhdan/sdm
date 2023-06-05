@@ -3,7 +3,8 @@
 		"language": "rus",
 		"mail_us": "Mail us",
 		"leave_request": "Leave a request",
-		"more": "See more"
+		"more": "See more",
+		"discount": "Save"
 	},
 	"home": {
 		"pricing": "Pricing & Plans",
@@ -11,7 +12,9 @@
 		"customer_service": "Customer Service",
 		"our_team": "Our Team",
 		"moto": "Let’s work together to unlock the full potential of your business in a {slot} world",
-		"free_showdown": "Sign up for a free evaluation"
+		"free_showdown": "Sign up for a free evaluation",
+		"ai_title": "Artificial Intelligence",
+		"ai_subtitle": "Does everything else"
 	},
 	"links": {
 		"home": "Home",

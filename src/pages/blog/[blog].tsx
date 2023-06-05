@@ -1,8 +1,12 @@
-import { type NextPage, type GetServerSideProps } from "next";
+import {
+  type NextPage,
+  type GetServerSideProps,
+  type GetStaticProps,
+} from "next";
 import Image from "next/image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import { getBlogBySlug } from "~/api/Blog";
+import { getBLogList, getBlogBySlug } from "~/api/Blog";
 import { Typography } from "~/components";
 import Meta from "~/components/Meta";
 import { getDictionary } from "~/lang";
@@ -79,11 +83,26 @@ const BlogPage: NextPage<BlogProps> = ({ blog, dictionary }) => {
 
 export default BlogPage;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-  locale,
-}) => {
+export const getStaticPaths = async () => {
+  const blogs = await getBLogList();
+  const paths = blogs.reduce((acc: string[], blog) => {
+    if (blog.attributes.slug) {
+      acc.push(`/blog/${blog.attributes.slug}`);
+      acc.push(`/en/blog/${blog.attributes.slug}`);
+    }
+    return acc;
+  }, []);
+  console.log(paths);
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const blogSlug = params?.blog || "";
+
   const blog = await getBlogBySlug(blogSlug.toString(), locale);
   if (!blog) {
     return {
@@ -93,6 +112,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const localeKey = locale === "ru" ? "ru" : "en";
   const dictionary = await getDictionary(localeKey);
   return {
+    revalidate: 60 * 10,
     props: {
       blog,
       dictionary,

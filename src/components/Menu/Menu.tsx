@@ -14,7 +14,7 @@ interface MenuProps {
 }
 export const Menu: FC<MenuProps> = ({ onClose, isOpen, dictionary }) => {
   const router = useRouter();
-  const { pathname, asPath, query, locale } = router;
+  const { asPath, locale } = router;
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {

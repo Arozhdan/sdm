@@ -21,7 +21,7 @@ export const getBlogPage = async (locale?: string) => {
 
 export const getBLogList = async (locale?: string) => {
   const localePostfix = locale ? `&locale=${locale}` : "";
-  const response = await agent.get<{ data: Blog }>(
+  const response = await agent.get<{ data: Blog[] }>(
     `/blogs?populate=image${localePostfix}`
   );
   return response.data.data;

@@ -1,5 +1,10 @@
 import { ArrowDownLeftIcon, ArrowUpRightIcon } from "@heroicons/react/24/solid";
-import { type NextPage, type GetServerSideProps } from "next";
+import {
+  type NextPage,
+  type GetServerSideProps,
+  type GetStaticProps,
+  type GetStaticPaths,
+} from "next";
 import cn from "classnames";
 import Head from "next/head";
 import Link from "next/link";
@@ -166,10 +171,20 @@ const ServicePage: NextPage<ServiceProps> = ({
 
 export default ServicePage;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-  locale,
-}) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const services = await getServicesList();
+  const paths = services.data.reduce((acc: string[], service) => {
+    acc.push("/services/" + service.attributes.slug);
+    acc.push("/en/services/" + service.attributes.slug);
+    return acc;
+  }, []);
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const serviceSlug = params?.service || "";
   const localeKey = locale === "ru" ? "ru" : "en";
   const service = await getServiceBySlug(serviceSlug.toString(), localeKey);
@@ -178,6 +193,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const dictionary = await getDictionary(localeKey);
 
   return {
+    revalidate: 60 * 10,
     props: { service, links: services.data, dictionary },
   };
 };

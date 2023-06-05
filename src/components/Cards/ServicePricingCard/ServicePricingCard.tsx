@@ -9,6 +9,7 @@ export const ServicePricingCard: FC<ServicePricingCardProps> = ({
   title,
   discount,
   index = 0,
+  pricePrefix,
   ...props
 }) => {
   const classes = cn(styles.servicePricingCard, className, {});
@@ -29,7 +30,10 @@ export const ServicePricingCard: FC<ServicePricingCardProps> = ({
         </Typography>
       </div>
       <div className={styles.right}>
-        <Button size="small">{discount}%</Button>
+        <Button size="small">
+          {pricePrefix && pricePrefix + " "}
+          {discount}%
+        </Button>
       </div>
     </a>
   );

@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const dictionary = await getDictionary(localeKey);
 
   return {
+    revalidate: 60 * 10,
     props: {
       page,
       blogs,

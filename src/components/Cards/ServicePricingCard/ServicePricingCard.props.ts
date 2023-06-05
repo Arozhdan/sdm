@@ -5,6 +5,7 @@ export interface ServicePricingCardProps
   extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   title: string;
+  pricePrefix: string;
   link?: string;
   index?: number;
   discount: number;

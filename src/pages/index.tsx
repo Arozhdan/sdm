@@ -100,6 +100,7 @@ const Home: NextPage<IHomeProps> = ({
               key={promo.id}
               className="mb-3"
               href={"#form"}
+              pricePrefix={dictionary.general.discount}
             />
           ))}
           <div className="flex justify-end pt-10">
@@ -431,11 +432,11 @@ const Home: NextPage<IHomeProps> = ({
               <div className="h-[90%] w-5 bg-gray-700" />
             </div>
             <Typography as="h4" variant="h2" weight="regular">
-              Нейросеть
+              {dictionary.home.ai_title}
             </Typography>
             <div className="mb-8 mt-2 h-px w-48 bg-accent" />
             <Typography as="p" variant="h2" weight="regular">
-              Делает всё остальное
+              {dictionary.home.ai_subtitle}
             </Typography>
           </div>
         </div>
@@ -453,7 +454,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const dictionary = await getDictionary(dictionaryKey);
 
   return {
-    revalidate: 10,
+    revalidate: 10 * 60,
     props: {
       page: response[0]?.data,
       services: response[1]?.data,

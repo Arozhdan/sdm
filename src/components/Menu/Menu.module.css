@@ -1,5 +1,6 @@
 .menu {
-  @apply fixed right-0 top-0 z-40 h-screen w-96 overflow-hidden bg-darkGray text-white shadow-md shadow-white/10;
+  @apply fixed right-0 top-0 z-40 h-screen w-full overflow-hidden bg-darkGray text-white shadow-md shadow-white/10 md:w-96;
+  animation: slideIn 0.2s ease-in-out;
 }
 .inner {
   @apply relative flex h-screen flex-col justify-between overflow-y-scroll px-10 pb-10 pt-16;
@@ -25,4 +26,13 @@
 }
 .button {
   @apply w-full;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
