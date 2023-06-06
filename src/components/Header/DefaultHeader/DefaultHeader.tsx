@@ -47,7 +47,7 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
             {video?.url ? (
               <video
                 className="absolute inset-0 h-full w-full object-cover"
-                src={process.env.NEXT_PUBLIC_API_URL! + video.url}
+                src={"http://admin.sassendigital.com" + video.url}
                 autoPlay
                 loop
                 muted
