@@ -71,11 +71,11 @@ const ServicePage: NextPage<ServiceProps> = ({
         headerImagePosition={service.attributes.headerImagePosition}
       />
       <section className="container py-32">
-        <Typography as="h2" variant="big">
+        <Typography as="h2" variant="big" className="mb-10">
           {dictionary.services.need}{" "}
           <ArrowDownLeftIcon className="inline w-8" />
         </Typography>
-        <div className="mt-40 grid gap-20 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-20 sm:grid-cols-2 lg:grid-cols-3">
           {service.attributes.reasons?.map((reason, index) => (
             <div key={reason.id}>
               <div className="mb-8 flex items-center">
@@ -129,8 +129,13 @@ const ServicePage: NextPage<ServiceProps> = ({
                   <div className="flex items-center gap-2">
                     {bonus.pricing?.rub && (
                       <>
-                        <Button size="small">{bonus.pricing?.rub} ₽</Button>/
-                        <Button size="small">{bonus.pricing?.eur} $</Button>
+                        <Button tag="a" href="#form" size="small">
+                          {bonus.pricing?.rub} ₽
+                        </Button>
+                        /
+                        <Button tag="a" href="#form" size="small">
+                          {bonus.pricing?.eur} $
+                        </Button>
                         <div className="flex h-full flex-col justify-end">
                           мес.
                         </div>
@@ -143,8 +148,25 @@ const ServicePage: NextPage<ServiceProps> = ({
           </div>
         </section>
       )}
+      {service.attributes.pricing?.rub && (
+        <section className="container flex justify-between py-10 lg:py-20">
+          <Typography as="h3" variant="big" className="text-white">
+            {dictionary.general.pricing}
+          </Typography>
+          <div className="flex items-center gap-4">
+            <Button tag="a" href="#form" size="small">
+              {service.attributes.pricing?.rub} ₽
+            </Button>
+            /
+            <Button tag="a" href="#form" size="small">
+              {service.attributes.pricing?.eur} $
+            </Button>
+            <span>{dictionary.general.monthly}</span>
+          </div>
+        </section>
+      )}
       {service.attributes.optional.length > 0 && (
-        <section className="container justify-between py-32 md:flex">
+        <section className="container justify-between py-20 md:flex">
           <Typography as="h3" variant="big">
             {dictionary.services.optional}
           </Typography>
@@ -164,7 +186,9 @@ const ServicePage: NextPage<ServiceProps> = ({
           </div>
         </section>
       )}
-      <FeedbackForm dictionary={dictionary} onSubmit={handleSubmit} />
+      <div id="form">
+        <FeedbackForm dictionary={dictionary} onSubmit={handleSubmit} />
+      </div>
     </div>
   );
 };
@@ -189,6 +213,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const localeKey = locale === "ru" ? "ru" : "en";
   const service = await getServiceBySlug(serviceSlug.toString(), localeKey);
   const services = await getServicesList(localeKey);
+
+  console.log("service", service);
 
   const dictionary = await getDictionary(localeKey);
 

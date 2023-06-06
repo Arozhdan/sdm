@@ -4,7 +4,9 @@
 		"mail_us": "Mail us",
 		"leave_request": "Leave a request",
 		"more": "See more",
-		"discount": "Save"
+		"discount": "Save",
+		"pricing": "Pricing",
+		"monthly": "monthly"
 	},
 	"home": {
 		"pricing": "Pricing & Plans",

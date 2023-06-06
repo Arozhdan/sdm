@@ -4,7 +4,9 @@
 		"mail_us": "Написать",
 		"leave_request": "Оставить заявку",
 		"more": "Подробнее",
-		"discount": "Экономия"
+		"discount": "Экономия",
+		"pricing": "Цены",
+		"monthly": "мес."
 	},
 	"home": {
 		"pricing": "Пакеты / стоимость",

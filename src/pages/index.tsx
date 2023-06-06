@@ -67,7 +67,11 @@ const Home: NextPage<IHomeProps> = ({
     <>
       <Meta seo={page.seo} />
 
-      <DefaultHeader title={page.title} button={page.headerLink} />
+      <DefaultHeader
+        title={page.title}
+        button={page.headerLink}
+        video={page.video?.data?.attributes}
+      />
       <section className="container mt-10 grid py-10 md:grid-cols-2 lg:mt-40 lg:grid-cols-3">
         {services.map((service) => (
           <ServiceCard

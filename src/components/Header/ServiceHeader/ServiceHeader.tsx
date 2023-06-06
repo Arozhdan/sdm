@@ -93,7 +93,7 @@ export const ServiceHeader: FC<ServiceHeaderProps> = ({
           as="div"
           variant="h2"
           weight="regular"
-          className="max-w-3xl"
+          className="relative z-10 max-w-3xl"
         >
           {RichTextComponent(description)}
         </Typography>
@@ -125,16 +125,26 @@ export const ServiceHeader: FC<ServiceHeaderProps> = ({
         </div>
       </div>
       {headerImage?.data?.attributes?.url && (
-        <Image
-          className={cn(styles.img, styles[headerImagePosition || "right"])}
-          src={
-            process.env.NEXT_PUBLIC_API_URL! +
-            headerImage?.data?.attributes?.url
-          }
-          width={headerImagePosition === "right" ? 800 : 1200}
-          height={headerImagePosition === "right" ? 1200 : 800}
-          alt={headerImage?.data?.attributes?.alternativeText || "header image"}
-        />
+        <div
+          className={cn(
+            styles.imgWrapper,
+            styles[headerImagePosition || "right"]
+          )}
+        >
+          <div className={cn(styles.img)}>
+            <Image
+              src={
+                process.env.NEXT_PUBLIC_API_URL! +
+                headerImage?.data?.attributes?.url
+              }
+              width={700}
+              height={700}
+              alt={
+                headerImage?.data?.attributes?.alternativeText || "header image"
+              }
+            />
+          </div>
+        </div>
       )}
     </header>
   );

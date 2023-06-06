@@ -19,19 +19,22 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs, dictionary }) => {
 
       <DefaultHeader title={data.title} image={data.image?.data?.attributes} />
 
-      <section className="container grid py-20 text-white md:grid-cols-2 lg:grid-cols-3 lg:py-40">
+      <section className="container grid gap-10 py-20 text-white md:grid-cols-2 lg:grid-cols-3 lg:py-40">
         {blogs.map((blog) => (
           <Link key={blog.id} href={"/blog/" + blog.attributes.slug}>
-            <Image
-              src={
-                process.env.NEXT_PUBLIC_API_URL! +
-                blog.attributes.image?.data.attributes.url
-              }
-              className="w-full object-cover"
-              width={300}
-              height={300}
-              alt={""}
-            />
+            <div className="relative aspect-square">
+              <Image
+                src={
+                  process.env.NEXT_PUBLIC_API_URL! +
+                  blog.attributes.image?.data.attributes.url
+                }
+                className="w-full object-cover"
+                fill
+                alt={
+                  blog.attributes.image?.data.attributes.alternativeText || ""
+                }
+              />
+            </div>
             <Typography variant="body-big" className="mb-4 mt-3 underline">
               {blog.attributes.title}
             </Typography>

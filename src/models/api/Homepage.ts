@@ -24,7 +24,9 @@ export interface Attributes {
   twoBlocksTitle: string;
   gainTitle: string;
   headerLink: HeaderLink;
-  video: Video;
+  video: {
+    data: Video;
+  };
   outroItems: OutroItem[];
   twoBlocks: TwoBlock[];
   seo: Seo;

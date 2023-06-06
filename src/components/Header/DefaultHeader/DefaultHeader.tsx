@@ -12,12 +12,14 @@ interface DefaultHeaderProps {
     url: string;
   };
   image?: Media;
+  video?: Media;
 }
 
 export const DefaultHeader: FC<DefaultHeaderProps> = ({
   title,
   button,
   image,
+  video,
 }) => {
   return (
     <header className="relative py-20 lg:min-h-screen">
@@ -42,16 +44,25 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
         </div>
         <div className="left-0 top-20 pr-10 md:absolute lg:w-1/2">
           <div className="relative pb-[100%]">
-            {image?.url ? (
+            {video?.url ? (
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src={process.env.NEXT_PUBLIC_API_URL! + video.url}
+                autoPlay
+                loop
+                muted
+              />
+            ) : (
               <Image
                 className="absolute inset-0 h-full w-full object-cover"
-                src={process.env.NEXT_PUBLIC_API_URL! + image.url}
+                src={
+                  process.env.NEXT_PUBLIC_API_URL! +
+                  "/uploads/header_img_3505a573f9.webp"
+                }
                 width={800}
                 height={1200}
                 alt="digital"
               />
-            ) : (
-              <Image src="/header-img.jpg" fill alt="digital" />
             )}
           </div>
         </div>
