@@ -2,13 +2,7 @@ import React from "react";
 
 export const Logo = () => {
   return (
-    <svg
-      width="68"
-      height="68"
-      viewBox="0 0 68 68"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
       <path
         d="M0 34C0 52.7777 15.2223 68 34 68C52.7777 68 68 52.7777 68 34C68 15.2223 52.7777 0 34 0C15.2223 0 0 15.2223 0 34Z"
         fill="white"

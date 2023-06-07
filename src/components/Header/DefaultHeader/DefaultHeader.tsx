@@ -57,7 +57,7 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
               <video
                 preload="none"
                 className="absolute inset-0 h-full w-full object-cover"
-                src={"http://admin.sassendigital.com" + video.url}
+                src={"https://admin.sassendigital.com" + video.url}
                 autoPlay
                 playsInline
                 loop
