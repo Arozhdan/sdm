@@ -13,15 +13,17 @@
 }
 
 .more {
-  @apply invisible absolute bottom-9 left-1/2 -translate-x-1/2 translate-y-10 transition duration-200;
+  @apply absolute bottom-9 left-1/2 -translate-x-1/2 transition duration-200 md:invisible md:translate-y-10;
 }
 
-.card:hover .imgWrapper {
-  @apply brightness-50;
-}
+@media (min-width: 768px) {
+  .card:hover .imgWrapper {
+    @apply brightness-50;
+  }
 
-.card:hover .more {
-  @apply visible translate-y-0;
+  .card:hover .more {
+    @apply visible translate-y-0;
+  }
 }
 
 .promo .imgWrapper::after {

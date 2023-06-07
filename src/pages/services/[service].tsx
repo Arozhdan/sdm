@@ -149,17 +149,17 @@ const ServicePage: NextPage<ServiceProps> = ({
         </section>
       )}
       {service.attributes.pricing?.rub && (
-        <section className="container flex justify-between py-10 lg:py-20">
-          <Typography as="h3" variant="big" className="text-white">
+        <section className="container justify-between py-10 lg:flex lg:py-20">
+          <Typography as="h3" variant="big" className="mb-6 text-white md:mb-0">
             {dictionary.general.pricing}
           </Typography>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
             <Button tag="a" href="#form" size="small">
               {service.attributes.pricing?.rub} ₽
             </Button>
-            /
+            <span className="hidden md:inline">/</span>
             <Button tag="a" href="#form" size="small">
-              {service.attributes.pricing?.eur} $
+              {service.attributes.pricing?.eur} €
             </Button>
             <span>{dictionary.general.monthly}</span>
           </div>

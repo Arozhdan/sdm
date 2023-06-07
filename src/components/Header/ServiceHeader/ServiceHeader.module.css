@@ -21,7 +21,7 @@
 }
 
 .imgWrapper {
-  @apply absolute bottom-0 left-0 right-0 z-0 flex;
+  @apply bottom-0 left-0 right-0 z-0 flex lg:absolute;
 }
 .img {
   @apply relative aspect-video w-full max-w-xl object-contain;

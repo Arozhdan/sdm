@@ -43,12 +43,23 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
           )}
         </div>
         <div className="left-0 top-20 pr-10 md:absolute lg:w-1/2">
-          <div className="relative pb-[100%]">
+          <div
+            className="relative pb-[100%]"
+            style={{
+              backgroundImage: `url(${
+                process.env.NEXT_PUBLIC_API_URL! +
+                "/uploads/sassen_ai_ed9fb72814.png"
+              })`,
+              backgroundSize: "cover",
+            }}
+          >
             {video?.url ? (
               <video
+                preload="none"
                 className="absolute inset-0 h-full w-full object-cover"
                 src={"http://admin.sassendigital.com" + video.url}
                 autoPlay
+                playsInline
                 loop
                 muted
               />
