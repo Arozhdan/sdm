@@ -4,11 +4,10 @@ import "~/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Footer, Nav } from "~/components";
-import { useRouter } from "next/router";
 import { type getDictionary } from "~/lang";
-import { type GetServerSideProps } from "next";
 import { type ValueType } from "~/types";
 import Head from "next/head";
+import Script from 'next/script'
 
 const Helvetica = localFont({
   src: "../assets/fonts/Helvetica.ttf",
@@ -20,6 +19,16 @@ const MyApp: AppType<MyAppProps> = ({ Component, pageProps }) => {
 
   return (
     <>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=ED1283469P" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'ED1283469P');
+        `}
+      </Script>
       <Head>
         <meta name="yandex-verification" content="4324fc1ffb0fa7cc" />
         <meta
