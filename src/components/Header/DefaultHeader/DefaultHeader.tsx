@@ -46,10 +46,9 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
           <div
             className="relative pb-[100%]"
             style={{
-              backgroundImage: `url(${
-                process.env.NEXT_PUBLIC_API_URL! +
-                "/uploads/sassen_ai_ed9fb72814.png"
-              })`,
+              backgroundImage: `url(${process.env.NEXT_PUBLIC_API_URL! +
+                "/uploads/IMG_6891_6ef22fec4d.jpg"
+                })`,
               backgroundSize: "cover",
             }}
           >
