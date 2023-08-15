@@ -22,7 +22,8 @@
 		"home": "Home",
 		"services": "Services",
 		"blog": "Blog",
-		"contact": "Contacts"
+		"contact": "Contacts",
+		"privacy": "Privacy Policy"
 	},
 	"contacts": {
 		"address": "Address",
@@ -44,7 +45,7 @@
 		"about_project": "About the project",
 		"project_link": "Instagram / website of the project",
 		"project_description": "Your request / project goals",
-		"agreement": "by clicking this button you agree to the website privacy policy",
+		"agreement": "by clicking this button you agree to the website <a class='text-primary' href='/privacy.pdf'>privacy policy</a>",
 		"success": "Your application has been sent successfully",
 		"error": "An error occurred while sending the application, please try again later or contact us by email"
 	}

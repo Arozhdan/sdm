@@ -45,6 +45,13 @@ export const Footer: FC<FooterProps> = ({ dictionary }) => {
           </Link>
         </div>
       </div>
+      <div className="container mt-10 flex justify-end gap-4">
+        <a href="/privacy.pdf" target="_blank">
+          <Typography variant="small" className="uppercase" weight="regular">
+            {dictionary?.links.privacy}
+          </Typography>
+        </a>
+      </div>
     </footer>
   );
 };

@@ -269,9 +269,10 @@ export const FeedbackForm = ({ onSubmit, dictionary }: FeedbackFormProps) => {
               as="span"
               variant="body3"
               className="mt-5 block text-gray-600 lg:mt-0"
-            >
-              {dictionary?.form.agreement}
-            </Typography>
+              dangerouslySetInnerHTML={{
+                __html: dictionary?.form.agreement || "",
+              }}
+            ></Typography>
           </div>
         </form>
       </div>
