@@ -7,8 +7,6 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { type Service } from "~/models/api/Service";
 import ReactMarkdown from "react-markdown";
-import { __embeddedInHtml } from "prettier.config.cjs";
-import { useNBSP } from "~/hooks";
 
 interface ServiceHeaderProps {
   title: Service["attributes"]["title"];
@@ -26,7 +24,7 @@ interface ServiceHeaderProps {
 const RichTextComponent = (text?: string) => {
   if (!text) return null;
   return (
-    <div>
+    <div className={styles.text}>
       <ReactMarkdown>{text}</ReactMarkdown>
     </div>
   );

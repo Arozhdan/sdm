@@ -37,3 +37,10 @@
 .bottom .img {
   @apply aspect-auto w-full  max-w-none lg:w-1/2;
 }
+
+.text ul {
+  @apply mb-12 mt-6 list-inside list-disc;
+}
+.text a {
+  @apply text-sm underline;
+}
