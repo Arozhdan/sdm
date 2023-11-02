@@ -13,7 +13,7 @@ const getHome = async (locale?: string) => {
   try {
     const urls = [
       "/home-page?populate=deep&" + localePostfix,
-      "/services?fields[0]=title&fields[0]=textColor&fields[1]=slug&populate=image&" +
+      "/services?fields[0]=title&fields[1]=textColor&fields[2]=slug&populate=image&" +
         localePostfix,
       "/faqs?" + localePostfix,
       "/teams?sort[0]=publishedAt:desc&populate=image&" + localePostfix,

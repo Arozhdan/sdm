@@ -54,6 +54,11 @@ export const Menu: FC<MenuProps> = ({ onClose, isOpen, dictionary }) => {
               <XMarkIcon />
             </button>
           </div>
+          <Link href="/ai">
+            <Typography variant="body1" className="uppercase" weight="regular">
+              {dictionary?.links.ai}
+            </Typography>
+          </Link>{" "}
           <Link href="/">
             <Typography variant="body1" className="uppercase" weight="regular">
               {dictionary?.links.home}

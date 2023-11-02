@@ -1,11 +1,5 @@
-import {
-  ArrowUpRightIcon,
-  BuildingLibraryIcon,
-  CalendarDaysIcon,
-  ChatBubbleBottomCenterIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import { type GetStaticProps, type NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { getHome } from "~/api/Home";
 import {
@@ -26,7 +20,6 @@ import {
   type Promo,
 } from "~/models/api";
 import { type Team } from "~/models/api/Team";
-import { toast } from "react-toastify";
 import { type Service } from "~/models/api/Service";
 import { getContacts } from "~/api/Settings";
 import { type Settings } from "~/models/api/Settings";
@@ -34,6 +27,8 @@ import Meta from "~/components/Meta";
 import { getDictionary, setSlot } from "~/lang";
 import { type ValueType } from "~/types";
 import { submitForm } from "~/api/Form";
+import { AppProps } from "next/app";
+import Layout from "~/components/layout";
 
 const Home: NextPage<IHomeProps> = ({
   page: { attributes: page },
@@ -64,7 +59,7 @@ const Home: NextPage<IHomeProps> = ({
     );
   };
   return (
-    <>
+    <Layout dictionary={dictionary}>
       <Meta seo={page.seo} />
 
       <DefaultHeader
@@ -442,7 +437,7 @@ const Home: NextPage<IHomeProps> = ({
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   );
 };
 

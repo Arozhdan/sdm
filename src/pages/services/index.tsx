@@ -2,6 +2,7 @@ import { type GetStaticProps, type NextPage } from "next";
 import { getServices, getServicesPage } from "~/api/Services";
 import { DefaultHeader, ServiceCard } from "~/components";
 import Meta from "~/components/Meta";
+import Layout from "~/components/layout";
 import { getDictionary } from "~/lang";
 import { type Services, type ServicesPage } from "~/models";
 import { type ValueType } from "~/types";
@@ -15,7 +16,7 @@ const ServicePage: NextPage<ServicePageProps> = ({
 
   if (!page) return null;
   return (
-    <>
+    <Layout dictionary={dictionary}>
       <Meta seo={data.seo} />
       <DefaultHeader
         title={data.title}
@@ -44,7 +45,7 @@ const ServicePage: NextPage<ServicePageProps> = ({
           label={dictionary.general.leave_request}
         />
       </section>
-    </>
+    </Layout>
   );
 };
 

@@ -7,7 +7,7 @@ import { Footer, Nav } from "~/components";
 import { type getDictionary } from "~/lang";
 import { type ValueType } from "~/types";
 import Head from "next/head";
-import Script from 'next/script'
+import Script from "next/script";
 
 const Helvetica = localFont({
   src: "../assets/fonts/Helvetica.ttf",
@@ -19,15 +19,15 @@ const MyApp: AppType<MyAppProps> = ({ Component, pageProps }) => {
 
   return (
     <>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=ED1283469P" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-ED1283469P" />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'ED1283469P');
-        `}
+          gtag('config', 'G-ED1283469P');
+          `}
       </Script>
       <Head>
         <meta name="yandex-verification" content="4324fc1ffb0fa7cc" />
@@ -40,10 +40,8 @@ const MyApp: AppType<MyAppProps> = ({ Component, pageProps }) => {
         id="#app"
         className={`${Helvetica.variable} min-h-screen bg-darkGray font-sans`}
       >
-        <Nav dictionary={dictionary} variant="agency" />
-        <Component {...pageProps} />
+        <Component {...pageProps} dictionary={dictionary} />
         <ToastContainer position="bottom-right" draggable autoClose={10000} />
-        <Footer dictionary={dictionary} />
       </div>
     </>
   );

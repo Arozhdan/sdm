@@ -261,7 +261,7 @@ export const FeedbackForm = ({ onSubmit, dictionary }: FeedbackFormProps) => {
               color="primary"
               className="w-full flex-shrink-0 lg:w-auto"
               size="large"
-              icon={<ArrowUpRightIcon />}
+              icon={<ArrowUpRightIcon />} 
             >
               {dictionary?.general.leave_request}
             </Button>

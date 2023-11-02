@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBLogList, getBlogPage } from "~/api/Blog";
 import { DefaultHeader, Typography } from "~/components";
 import Meta from "~/components/Meta";
+import Layout from "~/components/layout";
 import { getDictionary } from "~/lang";
 import { BlogPage } from "~/models";
 import { type Blog } from "~/models/api/Blog";
@@ -14,7 +15,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs, dictionary }) => {
 
   if (!page) return null;
   return (
-    <>
+    <Layout dictionary={dictionary}>
       <Meta seo={data.seo} />
 
       <DefaultHeader title={data.title} image={data.image?.data?.attributes} />
@@ -44,7 +45,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ page, blogs, dictionary }) => {
           </Link>
         ))}
       </section>
-    </>
+    </Layout>
   );
 };
 

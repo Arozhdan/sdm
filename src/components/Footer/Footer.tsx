@@ -6,11 +6,13 @@ import { type getDictionary } from "~/lang";
 
 interface FooterProps {
   dictionary?: ValueType<ReturnType<typeof getDictionary>>;
+  bg?: "primary" | "black";
 }
 
-export const Footer: FC<FooterProps> = ({ dictionary }) => {
+export const Footer: FC<FooterProps> = ({ dictionary, bg = "primary" }) => {
+  const classes = `bg-${bg} py-20 text-white md:py-40`;
   return (
-    <footer className="bg-primary py-20 text-white md:py-40">
+    <footer className={classes}>
       <div className="container justify-between md:flex">
         <div>
           <Typography as="h3" variant="h2" weight="regular">

@@ -26,7 +26,7 @@ export const getServicesPage = async (locale?: string) => {
 export const getServices = async (locale?: string) => {
   const localePostfix = locale ? `locale=${locale}` : "";
   const services = await agent.get<ServicesResponse>(
-    "/services?fields[0]=title&fields[0]=textColor&fields[1]=slug&populate=image&" +
+    "/services?fields[0]=title&fields[1]=textColor&fields[2]=slug&populate=image&" +
       localePostfix
   );
   return {

@@ -2,6 +2,7 @@ import { type NextPage, type GetServerSideProps } from "next";
 import React from "react";
 import { getContacts } from "~/api/Settings";
 import { Typography } from "~/components";
+import Layout from "~/components/layout";
 import { getDictionary } from "~/lang";
 import { type Settings } from "~/models/api/Settings";
 import { type ValueType } from "~/types";
@@ -12,7 +13,7 @@ const Contacts: NextPage<Props> = ({ data, dictionary }) => {
     ""
   );
   return (
-    <>
+    <Layout dictionary={dictionary}>
       <header className="bg-primary py-10">
         <div className="container text-white">
           <Typography variant="large">{dictionary.links.contact}</Typography>
@@ -72,7 +73,7 @@ const Contacts: NextPage<Props> = ({ data, dictionary }) => {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
 

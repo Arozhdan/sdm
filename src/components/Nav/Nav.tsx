@@ -19,29 +19,17 @@ export const Nav: FC<NavProps> = ({ variant = "agency", dictionary }) => {
           {variant === "agency" ? <LogoAgency /> : <Logo />}
         </Link>
         <div className="flex">
-          {variant === "agency" ? (
-            <>
-              <div className="hidden md:block">
-                <Button
-                  tag={"a"}
-                  href={"/#form"}
-                  icon={<ArrowUpRightIcon />}
-                  className="mr-16 "
-                >
-                  {dictionary?.general.leave_request}
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <Button icon={<ArrowUpRightIcon />} className="mr-6">
-                Попробовать бесплатно
-              </Button>
-              <Button icon={<ArrowUpRightIcon />} className="mr-10">
-                Регистрация
-              </Button>
-            </>
-          )}
+          <div className="hidden md:block">
+            <Button
+              tag={"a"}
+              href={"/#form"}
+              icon={<ArrowUpRightIcon />}
+              className="mr-16 "
+            >
+              {dictionary?.general.leave_request}
+            </Button>
+          </div>
+
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <MenuIcon />
           </button>

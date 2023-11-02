@@ -23,7 +23,9 @@
 		"services": "Services",
 		"blog": "Blog",
 		"contact": "Contacts",
-		"privacy": "Privacy Policy"
+		"privacy": "Privacy Policy",
+		"ai": "AI",
+		"registration": "Registration"
 	},
 	"contacts": {
 		"address": "Address",
