@@ -3,6 +3,7 @@ import {
   ArrowRightIcon,
   ArrowUpRightIcon,
 } from "@heroicons/react/24/solid";
+import clsx from "clsx";
 import { type GetStaticProps, type NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,7 +79,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
 
       <header className="bg-primary pt-20">
         <div className="container mx-auto">
-          <div className="justify-between space-y-10 lg:flex lg:space-y-0">
+          <div className="justify-between space-y-10 md:flex md:space-y-0">
             <Typography variant="large" className="text-white">
               {data.page.attributes.title1} <br />
               <ArrowRightIcon className="mr-10 inline-block w-10 text-accent" />
@@ -88,8 +89,8 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
             </Typography>
             <div>
               {data.page.attributes.headerItems.map((item) => (
-                <div className="flex text-white" key={item.id}>
-                  <ArrowUpRightIcon className="mr-2 inline-block w-5" />
+                <div className="flex items-start text-white" key={item.id}>
+                  <ArrowUpRightIcon className="mr-2 mt-3 inline-block  w-5" />
                   <Typography variant="body1" className="text-white">
                     {item.text}
                   </Typography>
@@ -194,28 +195,21 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
           </div>
         </section>
         <section className="container mx-auto py-20">
-          <Typography variant="large" className="text-center text-primary">
+          <Typography
+            variant="large"
+            className="mt-12 text-center text-primary"
+          >
             {dictionary.ai.how_it_works}
           </Typography>
           {data.page.attributes.steps.map((step, i) => (
             <div
-              className="mx-auto grid w-full max-w-6xl items-center justify-center gap-x-10 space-y-10 py-10 lg:grid-cols-2 lg:space-y-0 lg:py-32"
+              className={clsx(
+                "mx-auto w-full max-w-6xl items-center justify-center gap-x-10 py-10 md:flex",
+                i % 2 === 0 ? "flex-row-reverse" : "flex-row"
+              )}
               key={step.id}
             >
-              {i % 2 === 0 && (
-                <div>
-                  <Typography variant="body-big" className="text-primary">
-                    {step.title}
-                  </Typography>
-                  <div className="mb-6 h-px w-20 bg-primary"></div>
-                  <Typography
-                    variant="body3"
-                    className="max-w-sm"
-                    dangerouslySetInnerHTML={{ __html: step.subtitle || "" }}
-                  />
-                </div>
-              )}
-              <div className="h-96 w-full  p-2 lg:w-96">
+              <div className="md:w-2/5 lg:w-96">
                 <Image
                   src={
                     process.env.NEXT_PUBLIC_API_URL! +
@@ -227,19 +221,16 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                   className="h-full w-full"
                 />
               </div>
-              {i % 2 !== 0 && (
-                <div>
-                  <Typography variant="body-big" className="text-primary">
-                    {step.title}
-                  </Typography>
-                  <div className="mb-6 h-px w-20 bg-primary"></div>
-                  <Typography
-                    variant="body3"
-                    className="max-w-sm"
-                    dangerouslySetInnerHTML={{ __html: step.subtitle || "" }}
-                  />
-                </div>
-              )}
+              <div className="mt-10 md:mt-0 md:w-2/5">
+                <Typography variant="body-big" className="text-primary">
+                  {step.title}
+                </Typography>
+                <Typography
+                  variant="body3"
+                  className="max-w-sm"
+                  dangerouslySetInnerHTML={{ __html: step.subtitle || "" }}
+                />
+              </div>
             </div>
           ))}
         </section>
@@ -308,7 +299,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                     href="https://ai.sassendigital.com"
                   >
                     <Button size="small">
-                      SASSEN-MARKETING <ArrowUpRightIcon className="w-5" />
+                      SASSEN MARKETING <ArrowUpRightIcon className="w-5" />
                     </Button>
                   </a>
                 </div>

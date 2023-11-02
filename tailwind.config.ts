@@ -24,5 +24,6 @@ export default {
       },
     },
   },
+  safelist: ["flex-row", "flex-reverse"],
   plugins: [require("@tailwindcss/typography")],
 } satisfies Config;
