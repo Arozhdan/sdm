@@ -25,6 +25,11 @@ export const Footer: FC<FooterProps> = ({ dictionary, bg = "primary" }) => {
           </Typography>
         </div>
         <div className="mt-10 flex flex-wrap gap-4 md:mt-0 md:gap-10">
+          <Link href="/ai">
+            <Typography variant="body1" className="uppercase" weight="regular">
+              {dictionary?.links.ai}
+            </Typography>
+          </Link>
           <Link href="/">
             <Typography variant="body1" className="uppercase" weight="regular">
               {dictionary?.links.home}

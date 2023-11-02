@@ -3,7 +3,7 @@ import {
   ArrowRightIcon,
   ArrowUpRightIcon,
 } from "@heroicons/react/24/solid";
-import { GetStaticProps, NextPage } from "next";
+import { type GetStaticProps, type NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -19,9 +19,9 @@ import {
 } from "~/components";
 import { MenuIcon } from "~/components/Nav/MenuIcon/MenuIcon";
 import { getDictionary } from "~/lang";
-import { Testimonial } from "~/models/api";
-import { AiResponse } from "~/models/api/aiPage";
-import { ValueType } from "~/types";
+import { type Testimonial } from "~/models/api";
+import { type AiResponse } from "~/models/api/aiPage";
+import { type ValueType } from "~/types";
 
 const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,7 +78,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
 
       <header className="bg-primary pt-20">
         <div className="container mx-auto">
-          <div className="justify-between space-y-10 xl:flex xl:space-y-0">
+          <div className="justify-between space-y-10 lg:flex lg:space-y-0">
             <Typography variant="large" className="text-white">
               {data.page.attributes.title1} <br />
               <ArrowRightIcon className="mr-10 inline-block w-10 text-accent" />
@@ -112,8 +112,8 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
 
       <main className="pt-20">
         <section className="container mx-auto py-20 ">
-          <Typography variant="large" className="pl-20 text-primary">
-            Sassen.ai <br /> помогает:
+          <Typography variant="large" className="text-center text-primary">
+            Sassen.ai {dictionary.ai.helps}
           </Typography>
           <div className="mx-auto my-10 flex max-w-5xl flex-wrap items-start justify-center gap-3">
             {data.page.attributes.helpsTo.map((item) => (
@@ -125,7 +125,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
         </section>
         <section className="container mx-auto">
           <Typography variant="large" className="text-center text-primary">
-            Рубрики
+            {dictionary.ai.instruments}
           </Typography>
           <div className="my-32 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
             {data.page.attributes.prompts.data.map((prompt) => (
@@ -188,14 +188,14 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
               {data.page.attributes.testimonialsTItle}
             </Typography>
             <Typography variant="large" className="mb-10 text-left text-white">
-              О нас говорят
+              {dictionary.ai.people_say}
             </Typography>
             <Testimonials testimonials={data.testimonials} className="" />
           </div>
         </section>
         <section className="container mx-auto py-20">
           <Typography variant="large" className="text-center text-primary">
-            как это работает?
+            {dictionary.ai.how_it_works}
           </Typography>
           {data.page.attributes.steps.map((step, i) => (
             <div
@@ -215,7 +215,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                   />
                 </div>
               )}
-              <div className="h-96 w-full bg-primary p-2 lg:w-96">
+              <div className="h-96 w-full  p-2 lg:w-96">
                 <Image
                   src={
                     process.env.NEXT_PUBLIC_API_URL! +
@@ -243,15 +243,14 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
             </div>
           ))}
         </section>
-        <section className="bg-primary py-32">
+        <section className="bg-primary pt-32">
           <div className="container mx-auto grid gap-x-12 md:grid-cols-2">
             <div>
-              <Typography variant="big" className="text-white">
-                Готовы создать уникальный&nbsp;контент?
+              <Typography variant="big" className="max-w-xl text-white">
+                {data.page.attributes.footerTitle}
               </Typography>
               <Typography className="mt-10 max-w-lg text-white" variant="body2">
-                Пишите в 10 раз быстрее, вовлекайте свою аудиторию и больше
-                никогда не мучайтесь с пустой страницей
+                {data.page.attributes.footerSubtitle}
               </Typography>
               <a
                 className="mt-10 inline-block"
@@ -263,18 +262,14 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
               </a>
             </div>
             <div className="mt-10 flex flex-col items-end space-y-7 text-white md:mt-0">
-              <div className="border border-white px-3 py-2">
-                1500 слов в месяц бесплатно
-              </div>
-              <div className="border border-white px-3 py-2">
-                Без привязки карты
-              </div>
-              <div className="border border-white px-3 py-2">
-                Бесконечные виды контента
-              </div>
+              {data.page.attributes.footerItems.map((item) => (
+                <div className="border border-white px-3 py-2" key={item.id}>
+                  {item.text}
+                </div>
+              ))}
             </div>
           </div>
-          <div className="container relative mx-auto my-20 overflow-hidden bg-black py-20">
+          <div className=" relative mx-auto mt-20 overflow-hidden bg-black py-20 pb-20">
             <div
               className="absolute
 		right-0 top-0 h-80 w-80 -translate-y-1/2 translate-x-1/2
@@ -294,38 +289,29 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
               DIGITAL-MARKETING
             </span>
 
-            <Typography className="max-w-xl text-white" variant="body-big">
-              Задач, с которыми вам может помочь AI, действительно много, но в
-              рамках комплексного digital-маркетинга, он всегда будет ограничен
-            </Typography>
+            <div className="container mx-auto">
+              <Typography className="max-w-xl text-white" variant="body-big">
+                {data.page.attributes.ctaTtitle}
+              </Typography>
 
-            <div className="flex flex-col items-end">
-              <div>
-                <Typography
-                  as="div"
-                  className="my-6 ml-auto max-w-xl text-white"
-                  variant="body-big"
-                >
-                  Разблокировать полный потенциал своего
-                  <div className="relative inline-block">
-                    <span className="relative z-10">бизнеса</span>
-                    <span className="absolute -left-3 top-0 -z-0 h-full w-full bg-primary" />
-                  </div>
-                  &nbsp;&nbsp;&nbsp;
-                  <div className="relative inline-block">
-                    <span className="relative z-10">блога</span>
-                    <span className="absolute -left-3 top-0 -z-0 h-full w-full bg-primary" />
-                  </div>{" "}
-                  можно здесь
-                </Typography>
-                <a
-                  className=" mt-10 inline-block"
-                  href="https://ai.sassendigital.com"
-                >
-                  <Button size="small">
-                    SASSEN-MARKETING <ArrowUpRightIcon className="w-5" />
-                  </Button>
-                </a>
+              <div className="flex flex-col items-end">
+                <div>
+                  <Typography
+                    as="div"
+                    className="my-6 ml-auto max-w-xl text-white"
+                    variant="body-big"
+                  >
+                    {data.page.attributes.ctaSubtitle}
+                  </Typography>
+                  <a
+                    className=" mt-10 inline-block"
+                    href="https://ai.sassendigital.com"
+                  >
+                    <Button size="small">
+                      SASSEN-MARKETING <ArrowUpRightIcon className="w-5" />
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

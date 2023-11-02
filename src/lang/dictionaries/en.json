@@ -8,6 +8,12 @@
 		"pricing": "Pricing",
 		"monthly": "monthly"
 	},
+	"ai": {
+		"how_it_works": "How does it work?",
+		"instruments": "Instruments",
+		"people_say": "People say",
+		"helps": "helps"
+	},
 	"home": {
 		"pricing": "Packages & Deals",
 		"testimonials": "Testimonials",

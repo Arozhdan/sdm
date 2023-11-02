@@ -9,7 +9,7 @@ interface AiResponse {
 export const getAi = async (locale?: string) => {
   const localePostfix = locale ? `locale=${locale}` : "";
   const testimonialsResponse = await agent.get<AiResponse>(
-    `/testimonials?populate=*&${localePostfix}`
+    `/testimonials?populate=*&filters[aiRelated][$eq]=true&${localePostfix}`
   );
   const pageResponse = await agent.get<AiResponse>(
     `/ai-page?populate=deep&${localePostfix}`

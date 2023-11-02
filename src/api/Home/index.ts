@@ -17,7 +17,8 @@ const getHome = async (locale?: string) => {
         localePostfix,
       "/faqs?" + localePostfix,
       "/teams?sort[0]=publishedAt:desc&populate=image&" + localePostfix,
-      "/testimonials?populate=*&" + localePostfix,
+      "/testimonials?populate=*&filters[$or][0][aiRelated][$ne]=true&filters[$or][1][aiRelated][$null]=true&" +
+        localePostfix,
       "/promos?" + localePostfix,
     ];
     const requests = urls.map((url) => agent.get(url));
