@@ -1,6 +1,7 @@
 .testimonials > svg {
   @apply h-8 w-8 text-white hover:text-white/50;
 }
+
 .info {
   @apply max-w-[80%];
 }

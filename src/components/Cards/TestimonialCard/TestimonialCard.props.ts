@@ -3,6 +3,7 @@ export interface TestimonialCardProps
   name: string;
   role: string;
   avatar?: string;
+  isShort?: boolean;
   quote: string;
   quoteFontSize?: "body2" | "body3";
   quoteMaxLines?: number;

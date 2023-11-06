@@ -27,8 +27,6 @@ import { type ValueType } from "~/types";
 const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // return <pre>{JSON.stringify(data.page.attributes.media, null, 2)}</pre>;
-
   return (
     <div className="min-h-screen bg-white">
       <nav className="sticky left-0 top-0 w-full bg-primary py-10">
@@ -112,11 +110,11 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
       </header>
 
       <main className="pt-20">
-        <section className="container mx-auto py-20 ">
+        <section id="Sassen.ai" className="container mx-auto py-20 ">
           <Typography variant="large" className="text-center text-primary">
             Sassen.ai {dictionary.ai.helps}
           </Typography>
-          <div className="mx-auto my-10 flex max-w-5xl flex-wrap items-start justify-center gap-3">
+          <div className="mx-auto mb-20 mt-16 flex max-w-5xl flex-wrap items-start justify-center gap-3">
             {data.page.attributes.helpsTo.map((item) => (
               <Button key={item.id} outline>
                 {item.text}
@@ -124,35 +122,38 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
             ))}
           </div>
         </section>
-        <section className="container mx-auto">
+        <section id="instruments" className="container mx-auto">
           <Typography variant="large" className="text-center text-primary">
             {dictionary.ai.instruments}
           </Typography>
-          <div className="my-32 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="mb-32 mt-16 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
             {data.page.attributes.prompts.data.map((prompt) => (
               <a
                 key={prompt.id}
                 href="https://ai.sassendigital.com"
-                className="block border border-primary p-10 pb-2"
+                className="group block border border-primary p-6 pb-6 pt-6  transition hover:rounded-lg hover:bg-primary"
               >
-                <Typography className="text-primary" variant="h3">
+                <Typography
+                  className="line-clamp-2 h-14 text-primary transition group-hover:text-white"
+                  variant="h3"
+                >
                   {prompt.attributes.name}
                 </Typography>
-                <Typography className="mt-10" variant="body3">
+                <Typography
+                  className="mt-5 line-clamp-4 h-24 transition group-hover:text-white"
+                  variant="body3"
+                >
                   {prompt.attributes.description}
                 </Typography>
-                <Button
-                  icon={<ArrowUpRightIcon />}
-                  className="-ml-6 mt-10"
-                  size="small"
-                >
+                <div className="mt-2 inline-flex items-center border-b border-primary text-primary  transition group-hover:text-white">
                   Попробовать бесплатно
-                </Button>
+                  <ArrowUpRightIcon className="ml-2 w-4 transition group-hover:-rotate-[135deg]" />
+                </div>
               </a>
             ))}
-            <a className="relative block bg-primary p-10 pb-6 xl:col-span-2">
+            <div className="relative block bg-primary p-10 pb-6 xl:col-span-2">
               <Typography variant="h3" className="uppercase text-white">
-                Freestyle
+                ЧАТ PRO
               </Typography>
               <Typography
                 variant="body-big"
@@ -160,9 +161,12 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
               >
                 Cпроси меня что <br /> угодно
               </Typography>
-              <div className="mt-8 inline-block border-b text-white">
+              <a
+                href="https://ai.sassendigital.com"
+                className="mt-8 inline-block border-b text-white"
+              >
                 Попробовать <ArrowLeftIcon className="inline-block w-4" />
-              </div>
+              </a>
               <Image
                 src="/promo.png"
                 alt="AI"
@@ -170,10 +174,10 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                 height={444}
                 className="absolute bottom-0 right-0 max-h-full"
               />
-            </a>
+            </div>
           </div>
         </section>
-        <section className="bg-primary pb-10">
+        <section id="testimonialsTItle" className="bg-primary pb-10">
           <div className="container relative mx-auto">
             <Image
               src="/22.png"
@@ -194,7 +198,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
             <Testimonials testimonials={data.testimonials} className="" />
           </div>
         </section>
-        <section className="container mx-auto py-20">
+        <section id="how_it_works" className="container mx-auto py-20">
           <Typography
             variant="large"
             className="mt-12 text-center text-primary"

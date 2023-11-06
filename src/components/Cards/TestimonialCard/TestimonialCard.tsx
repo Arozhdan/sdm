@@ -13,6 +13,7 @@ export const TestimonialCard: FC<TestimonialCardProps> = (props) => {
     quote,
     role,
     avatar,
+    isShort = false,
     quoteFontSize = "body3",
     quoteMaxLines,
     ...rest
@@ -20,6 +21,7 @@ export const TestimonialCard: FC<TestimonialCardProps> = (props) => {
   const classes = cn(styles.testimonialCard, className);
   const quoteClasses = cn(styles.quote, {
     [styles.linesMax || ""]: quoteMaxLines,
+    [styles.isShort || ""]: isShort,
   });
 
   return (

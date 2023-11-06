@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { type FC } from "react";
 import { type TestimonialsProps } from "./Testimonials.props";
 import { TestimonialCard } from "../Cards/TestimonialCard/TestimonialCard";
 import "slick-carousel/slick/slick.css";
@@ -17,6 +17,7 @@ export const Testimonials: FC<TestimonialsProps> = ({
   const sliderOptions: Settings = {
     slidesToScroll: 1,
     slidesToShow: 3,
+    className: "slider",
     nextArrow: <ArrowRightIcon />,
     prevArrow: <ArrowLeftIcon />,
     responsive: [
@@ -40,12 +41,12 @@ export const Testimonials: FC<TestimonialsProps> = ({
   return (
     <Slider {...sliderOptions} className={classes}>
       {testimonials.map((testimonial, index) => (
-        <div className="px-10" key={testimonial.id}>
+        <div className="h-full px-10" key={index}>
           <TestimonialCard
             name={testimonial.attributes.name}
             role={testimonial.attributes.role}
             quote={testimonial.attributes.quote}
-            avatar={testimonial.attributes.avatar?.data.attributes.url}
+            avatar={testimonial.attributes.avatar?.data?.attributes?.url}
           />
         </div>
       ))}

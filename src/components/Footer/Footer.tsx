@@ -58,6 +58,11 @@ export const Footer: FC<FooterProps> = ({ dictionary, bg = "primary" }) => {
             {dictionary?.links.privacy}
           </Typography>
         </a>
+        <a href="https://admin.sassendigital.com/uploads/Oferta_servis_liczenziya_tarify_chat_bot_98121010be.pdf">
+          <Typography variant="small" className="uppercase" weight="regular">
+            {dictionary?.links.policy}
+          </Typography>
+        </a>
       </div>
     </footer>
   );
