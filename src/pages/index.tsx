@@ -419,7 +419,7 @@ const Home: NextPage<IHomeProps> = ({
                 <Image
                   src={
                     process.env.NEXT_PUBLIC_API_URL! +
-                    "/uploads/sassen_ai_ed9fb72814.png"
+                    "/uploads/6_046b9874d4.png"
                   }
                   fill
                   alt={""}
