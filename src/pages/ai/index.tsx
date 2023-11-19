@@ -41,7 +41,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
             <div className="hidden md:block">
               <Button
                 tag={"a"}
-                href={"https://ai.sassendigital.com"}
+                href="/#form"
                 icon={<ArrowUpRightIcon />}
                 size="small"
               >
@@ -172,7 +172,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                 alt="AI"
                 width={444}
                 height={444}
-                className="absolute bottom-0 right-0 max-h-full"
+                className="absolute bottom-0 right-0 max-h-full w-2/3 md:w-1/2"
               />
             </div>
           </div>
@@ -277,10 +277,10 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
 		transform rounded-full bg-gradient-to-br from-accent/30 
 		to-accent/40 shadow-2xl shadow-accent/50 blur-3xl filter"
             />
-            <span className="absolute right-0 top-1/3 text-7xl font-bold uppercase tracking-wider text-secondary/25">
+            <span className="absolute right-0 top-1/3 text-4xl font-bold uppercase tracking-wider text-secondary/25 md:text-7xl">
               SMM
             </span>
-            <span className="absolute -bottom-2 -left-1 max-w-3xl text-7xl font-bold uppercase tracking-wider text-secondary/25">
+            <span className="absolute -bottom-2 -left-1 hidden max-w-3xl text-4xl font-bold uppercase tracking-wider text-secondary/25 md:block md:text-7xl">
               DIGITAL-MARKETING
             </span>
 
@@ -300,7 +300,7 @@ const AIPage: NextPage<AIPageProps> = ({ dictionary, data }) => {
                   </Typography>
                   <a
                     className=" mt-10 inline-block"
-                    href="https://ai.sassendigital.com"
+                    href="https://sassendigital.com"
                   >
                     <Button size="small">
                       SASSEN MARKETING <ArrowUpRightIcon className="w-5" />

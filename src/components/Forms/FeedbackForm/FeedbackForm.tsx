@@ -169,8 +169,7 @@ export const FeedbackForm = ({ onSubmit, dictionary }: FeedbackFormProps) => {
         <div className="relative z-10 h-full w-full">
           <Image
             src={
-              process.env.NEXT_PUBLIC_API_URL! +
-              "/uploads/digital_d10e489127.png"
+              process.env.NEXT_PUBLIC_API_URL! + "/uploads/1_1_bf8f7e7c5e.png"
             }
             fill
             alt=""
@@ -261,7 +260,7 @@ export const FeedbackForm = ({ onSubmit, dictionary }: FeedbackFormProps) => {
               color="primary"
               className="w-full flex-shrink-0 lg:w-auto"
               size="large"
-              icon={<ArrowUpRightIcon />} 
+              icon={<ArrowUpRightIcon />}
             >
               {dictionary?.general.leave_request}
             </Button>
