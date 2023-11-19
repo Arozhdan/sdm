@@ -47,8 +47,7 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
             className="relative pb-[100%]"
             style={{
               backgroundImage: `url(${
-                process.env.NEXT_PUBLIC_API_URL! +
-                "/uploads/Frame_14_4b28790b2b.jpg"
+                process.env.NEXT_PUBLIC_API_URL! + "/uploads/6_046b9874d4.png"
               })`,
               backgroundSize: "cover",
             }}
@@ -68,7 +67,7 @@ export const DefaultHeader: FC<DefaultHeaderProps> = ({
                 className="absolute inset-0 h-full w-full object-cover"
                 src={
                   process.env.NEXT_PUBLIC_API_URL! +
-                  "/uploads/header_img_3505a573f9.webp"
+                  "/uploads/Frame_14_4b28790b2b.png"
                 }
                 width={800}
                 height={1200}
